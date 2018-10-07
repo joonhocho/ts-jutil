@@ -4,6 +4,7 @@ import {
   createBatcher,
   mapPromise,
   promiseAll,
+  sleep,
   waitAll,
 } from './promise';
 
@@ -11,6 +12,12 @@ import {
 const promiseLike = (v: any) => ({
   // tslint:disable-next-line typedef
   then: (x: any) => Promise.resolve(x(v)),
+});
+
+test('sleep', async () => {
+  const t = Date.now();
+  await sleep(150);
+  expect(Date.now() - t).toBeGreaterThanOrEqual(150);
 });
 
 test('mapPromise', async () => {

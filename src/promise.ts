@@ -1,5 +1,12 @@
 export type PromiseOfNewType<T, U> = T extends Promise<any> ? Promise<U> : U;
 
+export const sleep = (ms: number): Promise<void> =>
+  new Promise(
+    (resolve): void => {
+      setTimeout(resolve, ms);
+    }
+  );
+
 export const mapPromise = <V, MV>(
   data: V | Promise<V>,
   map: (v: V) => MV
