@@ -173,8 +173,19 @@ test('DeferredPromise', async () => {
     deferred.resolve(2);
     deferred.reject('error');
   }, 10);
+
+  expect(deferred.status).toBe('pending');
+  expect(deferred.fulfilled).toBe(false);
+  expect(deferred.rejected).toBe(false);
+
   expect(await deferred.promise).toBe(1);
+
+  expect(deferred.status).toBe('fulfilled');
+  expect(deferred.fulfilled).toBe(true);
+  expect(deferred.rejected).toBe(false);
+
   await sleep(1);
+
   expect(await deferred.promise).toBe(1);
 
   const deferred2 = new DeferredPromise();
@@ -183,7 +194,18 @@ test('DeferredPromise', async () => {
     deferred2.reject('e2');
     deferred2.resolve(2);
   }, 10);
-  expect(deferred2.promise).rejects.toBe('e');
+
+  expect(deferred2.status).toBe('pending');
+  expect(deferred2.fulfilled).toBe(false);
+  expect(deferred2.rejected).toBe(false);
+
+  await expect(deferred2.promise).rejects.toBe('e');
+
+  expect(deferred2.status).toBe('rejected');
+  expect(deferred2.fulfilled).toBe(false);
+  expect(deferred2.rejected).toBe(true);
+
   await sleep(1);
-  expect(deferred2.promise).rejects.toBe('e');
+
+  await expect(deferred2.promise).rejects.toBe('e');
 });

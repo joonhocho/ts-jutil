@@ -137,6 +137,8 @@ export class DeferredPromise<T> {
   protected _resolve: ((value: T) => void) | null = null;
   protected _reject: ((reason?: any) => void) | null = null;
 
+  private _fulfilled = false;
+
   constructor() {
     this.promise = new Promise<T>(
       (resolve, reject): void => {
@@ -149,6 +151,7 @@ export class DeferredPromise<T> {
   public resolve(value: T): void {
     const { _resolve } = this;
     if (_resolve) {
+      this._fulfilled = true;
       this._resolve = null;
       this._reject = null;
       _resolve(value);
@@ -162,5 +165,21 @@ export class DeferredPromise<T> {
       this._reject = null;
       _reject(...args);
     }
+  }
+
+  public get pending(): boolean {
+    return Boolean(this._reject);
+  }
+
+  public get fulfilled(): boolean {
+    return this._fulfilled;
+  }
+
+  public get rejected(): boolean {
+    return !(this._fulfilled || this.pending);
+  }
+
+  public get status(): 'pending' | 'fulfilled' | 'rejected' {
+    return this.pending ? 'pending' : this.fulfilled ? 'fulfilled' : 'rejected';
   }
 }
