@@ -2,6 +2,7 @@ import { last } from './array';
 import {
   allValues,
   createBatcher,
+  DeferredPromise,
   mapPromise,
   promiseAll,
   sleep,
@@ -163,4 +164,26 @@ test('allValues', async () => {
       expect(e.message).toBe('eee');
     }
   );
+});
+
+test('DeferredPromise', async () => {
+  const deferred = new DeferredPromise();
+  setTimeout(() => {
+    deferred.resolve(1);
+    deferred.resolve(2);
+    deferred.reject('error');
+  }, 10);
+  expect(await deferred.promise).toBe(1);
+  await sleep(1);
+  expect(await deferred.promise).toBe(1);
+
+  const deferred2 = new DeferredPromise();
+  setTimeout(() => {
+    deferred2.reject('e');
+    deferred2.reject('e2');
+    deferred2.resolve(2);
+  }, 10);
+  expect(deferred2.promise).rejects.toBe('e');
+  await sleep(1);
+  expect(deferred2.promise).rejects.toBe('e');
 });

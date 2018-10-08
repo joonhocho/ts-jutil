@@ -130,3 +130,37 @@ export const allValues = <T extends { [key: string]: any }>(
 };
 
 export const promiseAll = allValues;
+
+export class DeferredPromise<T> {
+  public readonly promise: Promise<T>;
+
+  protected _resolve: ((value: T) => void) | null = null;
+  protected _reject: ((reason?: any) => void) | null = null;
+
+  constructor() {
+    this.promise = new Promise<T>(
+      (resolve, reject): void => {
+        this._resolve = resolve;
+        this._reject = reject;
+      }
+    );
+  }
+
+  public resolve(value: T): void {
+    const { _resolve } = this;
+    if (_resolve) {
+      this._resolve = null;
+      this._reject = null;
+      _resolve(value);
+    }
+  }
+
+  public reject(...args: any): void {
+    const { _reject } = this;
+    if (_reject) {
+      this._resolve = null;
+      this._reject = null;
+      _reject(...args);
+    }
+  }
+}
