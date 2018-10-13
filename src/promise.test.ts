@@ -179,6 +179,7 @@ test('DeferredPromise', async () => {
   expect(deferred.rejected).toBe(false);
 
   expect(await deferred.promise).toBe(1);
+  expect(await deferred.then((x: any) => x * 2)).toBe(2);
 
   expect(deferred.status).toBe('fulfilled');
   expect(deferred.fulfilled).toBe(true);

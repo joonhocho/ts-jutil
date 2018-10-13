@@ -132,15 +132,15 @@ export const allValues = <T extends { [key: string]: any }>(
 export const promiseAll = allValues;
 
 export class DeferredPromise<T> {
-  public readonly promise: Promise<T>;
+  protected readonly _promise: Promise<T>;
 
-  protected _resolve: ((value: T) => void) | null = null;
+  protected _resolve: ((value: T | PromiseLike<T>) => void) | null = null;
   protected _reject: ((reason?: any) => void) | null = null;
 
   private _fulfilled = false;
 
   constructor() {
-    this.promise = new Promise<T>(
+    this._promise = new Promise<T>(
       (resolve, reject): void => {
         this._resolve = resolve;
         this._reject = reject;
@@ -148,7 +148,7 @@ export class DeferredPromise<T> {
     );
   }
 
-  public resolve(value: T): void {
+  public resolve(value: T | PromiseLike<T>): void {
     const { _resolve } = this;
     if (_resolve) {
       this._fulfilled = true;
@@ -167,6 +167,10 @@ export class DeferredPromise<T> {
     }
   }
 
+  get promise(): Promise<T> {
+    return this._promise;
+  }
+
   public get pending(): boolean {
     return Boolean(this._reject);
   }
@@ -181,5 +185,13 @@ export class DeferredPromise<T> {
 
   public get status(): 'pending' | 'fulfilled' | 'rejected' {
     return this.pending ? 'pending' : this.fulfilled ? 'fulfilled' : 'rejected';
+  }
+
+  public then(...args: any): Promise<T> {
+    return this._promise.then(...args);
+  }
+
+  public catch(...args: any): Promise<T> {
+    return this._promise.catch(...args);
   }
 }
