@@ -348,7 +348,10 @@ export const mapKeys = <T extends AnyObject, D extends AnyObject>(
   return out;
 };
 
-export const get = (obj: AnyObject | null, path: string): any => {
+export const get = <TData = any>(
+  obj: AnyObject | null,
+  path: string
+): TData | undefined => {
   if (!obj) {
     return undefined;
   }
@@ -367,11 +370,13 @@ export const get = (obj: AnyObject | null, path: string): any => {
   return scope[keys[i]];
 };
 
-export const getter = (path: string): ((obj: AnyObject | null) => any) => {
+export const getter = <TData = any>(
+  path: string
+): ((obj: AnyObject | null) => TData | undefined) => {
   const keys = path.split('.');
   const lastIndex = keys.length - 1;
 
-  return (obj: AnyObject | null): any => {
+  return (obj: AnyObject | null): TData | undefined => {
     if (!obj) {
       return undefined;
     }
@@ -486,4 +491,20 @@ export const enums = (list: string[], start = 1): IEnum => {
     dest[list[i]] = start + i;
   }
   return dest;
+};
+
+export const getterMap = <TData>(mapping: {
+  [key: string]: string;
+}): ((obj: AnyObject | null) => TData) => {
+  const keys = getKeys(mapping);
+  const getters = keys.map((k) => getter(mapping[k]));
+  const len = keys.length;
+
+  return (obj: AnyObject | null): TData => {
+    const dest = {} as any;
+    for (let i = 0; i < len; i += 1) {
+      dest[keys[i]] = getters[i](obj);
+    }
+    return dest;
+  };
 };
