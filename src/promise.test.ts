@@ -209,4 +209,17 @@ test('DeferredPromise', async () => {
   await sleep(1);
 
   await expect(deferred2.promise).rejects.toBe('e');
+
+  // timeout
+  const deferred3 = new DeferredPromise(5);
+  const errorP = expect(deferred3.promise).rejects.toThrowError('timeout');
+  await sleep(10);
+  deferred3.resolve(true);
+  await errorP;
+
+  // resolve before timeout
+  const deferred4 = new DeferredPromise(20);
+  await sleep(10);
+  deferred4.resolve('good');
+  expect(await deferred4.promise).toBe('good');
 });

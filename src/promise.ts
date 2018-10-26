@@ -133,27 +133,32 @@ export const promiseAll = allValues;
 
 export class DeferredPromise<T> {
   protected readonly _promise: Promise<T>;
-
   protected _resolve: ((value: T | PromiseLike<T>) => void) | null = null;
   protected _reject: ((reason?: any) => void) | null = null;
+  protected _tid?: any; // number | NodeJS.Timer
+  protected _fulfilled = false;
 
-  private _fulfilled = false;
-
-  constructor() {
+  constructor(protected timeout?: number) {
     this._promise = new Promise<T>(
       (resolve, reject): void => {
         this._resolve = resolve;
         this._reject = reject;
       }
     );
+    if (timeout) {
+      this._tid = setTimeout(() => {
+        if (this._reject) {
+          this.reject(new Error('timeout'));
+        }
+      }, timeout);
+    }
   }
 
   public resolve(value: T | PromiseLike<T>): void {
     const { _resolve } = this;
     if (_resolve) {
       this._fulfilled = true;
-      this._resolve = null;
-      this._reject = null;
+      this.clear();
       _resolve(value);
     }
   }
@@ -161,9 +166,26 @@ export class DeferredPromise<T> {
   public reject(...args: any): void {
     const { _reject } = this;
     if (_reject) {
-      this._resolve = null;
-      this._reject = null;
+      this.clear();
       _reject(...args);
+    }
+  }
+
+  public then(...args: any): Promise<T> {
+    return this._promise.then(...args);
+  }
+
+  public catch(...args: any): Promise<T> {
+    return this._promise.catch(...args);
+  }
+
+  private clear(): void {
+    this._resolve = null;
+    this._reject = null;
+    const { _tid } = this;
+    if (_tid) {
+      clearTimeout(_tid);
+      this._tid = undefined;
     }
   }
 
@@ -185,13 +207,5 @@ export class DeferredPromise<T> {
 
   public get status(): 'pending' | 'fulfilled' | 'rejected' {
     return this.pending ? 'pending' : this.fulfilled ? 'fulfilled' : 'rejected';
-  }
-
-  public then(...args: any): Promise<T> {
-    return this._promise.then(...args);
-  }
-
-  public catch(...args: any): Promise<T> {
-    return this._promise.catch(...args);
   }
 }
