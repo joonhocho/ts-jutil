@@ -38,10 +38,10 @@ export const formatShortNumber = (
     units = defaultSuffixes,
     precision = 2,
   }: {
-    divisor: number;
-    units: string[];
-    precision: number;
-  } = {} as any
+    divisor?: number;
+    units?: string[];
+    precision?: number;
+  } = {}
 ): string => {
   const sign = n >= 0 ? '' : '-';
   let abs = Math.abs(n);

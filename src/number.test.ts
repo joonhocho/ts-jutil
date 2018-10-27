@@ -50,7 +50,11 @@ test('formatShortNumber', () => {
   expect(formatShortNumber(0)).toBe('0');
   expect(formatShortNumber(999)).toBe('999');
   expect(formatShortNumber(1000)).toBe('1.0K');
+  expect(formatShortNumber(1000, { precision: 1 })).toBe('1K');
   expect(formatShortNumber(10000)).toBe('10K');
+  expect(
+    formatShortNumber(10000, { divisor: 10000, units: ['', 'm'], precision: 3 })
+  ).toBe('1.00m');
   expect(formatShortNumber(99999)).toBe('100K');
   expect(formatShortNumber(999999)).toBe('1.0M');
   expect(formatShortNumber(1000000)).toBe('1.0M');
