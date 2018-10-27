@@ -28,3 +28,22 @@ export const parseFloatInRange = (
   const v = parseFloat(str);
   return v >= mi && v <= ma ? v : null;
 };
+
+const defaultSuffixes = ['', 'K', 'M', 'B'];
+
+export const formatShortNumber = (
+  n: number,
+  divideBy = 1000,
+  suffixes = defaultSuffixes
+): string => {
+  const sign = n >= 0 ? '' : '-';
+  let abs = Math.abs(n);
+  const len = suffixes.length;
+  for (let i = 0; i < len; i += 1) {
+    if (abs < divideBy || i >= len - 1) {
+      return `${sign}${abs}${suffixes[i]}`;
+    }
+    abs = Math.round(abs / divideBy);
+  }
+  return `${sign}${abs}${suffixes[len - 1]}`;
+};
