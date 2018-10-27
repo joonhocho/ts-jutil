@@ -33,17 +33,26 @@ const defaultSuffixes = ['', 'K', 'M', 'B'];
 
 export const formatShortNumber = (
   n: number,
-  divideBy = 1000,
-  suffixes = defaultSuffixes
+  {
+    divisor = 1000,
+    units = defaultSuffixes,
+    precision = 2,
+  }: {
+    divisor: number;
+    units: string[];
+    precision: number;
+  } = {} as any
 ): string => {
   const sign = n >= 0 ? '' : '-';
   let abs = Math.abs(n);
-  const len = suffixes.length;
+  const len = units.length;
   for (let i = 0; i < len; i += 1) {
-    if (abs < divideBy || i >= len - 1) {
-      return `${sign}${abs}${suffixes[i]}`;
+    if (abs < divisor || i >= len - 1) {
+      const p = Math.max(0, precision - `${abs}`.length);
+      const ns = i === 0 ? abs : abs.toFixed(p);
+      return `${sign}${ns}${units[i]}`;
     }
-    abs = Math.round(abs / divideBy);
+    abs = Math.round(abs / divisor);
   }
-  return `${sign}${abs}${suffixes[len - 1]}`;
+  return `${sign}${abs}${units[len - 1]}`;
 };
