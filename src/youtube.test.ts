@@ -1,46 +1,46 @@
-import { parseVideoIdFromYoutubeVideoUrl } from './youtube';
+import { parseVideoIdFromYouTubeVideoUrl } from './youtube';
 
-test('parseVideoIdFromYoutubeVideoUrl', () => {
+test('parseVideoIdFromYouTubeVideoUrl', () => {
   expect(
-    parseVideoIdFromYoutubeVideoUrl(
+    parseVideoIdFromYouTubeVideoUrl(
       'https://www.youtube.com/watch?v=tOpoyyEAI-o'
     )
   ).toBe('tOpoyyEAI-o');
   expect(
-    parseVideoIdFromYoutubeVideoUrl(
+    parseVideoIdFromYouTubeVideoUrl(
       'https://www.youtube.com/watch?v=tOpoyyEAI-o&t=1'
     )
   ).toBe('tOpoyyEAI-o');
   expect(
-    parseVideoIdFromYoutubeVideoUrl('youtube.com/watch?v=tOpoyyEAI-o')
+    parseVideoIdFromYouTubeVideoUrl('youtube.com/watch?v=tOpoyyEAI-o')
   ).toBe('tOpoyyEAI-o');
   expect(
-    parseVideoIdFromYoutubeVideoUrl('iyoutube.com/watch?v=tOpoyyEAI-o')
+    parseVideoIdFromYouTubeVideoUrl('iyoutube.com/watch?v=tOpoyyEAI-o')
   ).toBe(null);
 
-  expect(parseVideoIdFromYoutubeVideoUrl('https://youtu.be/tOpoyyEAI-o')).toBe(
+  expect(parseVideoIdFromYouTubeVideoUrl('https://youtu.be/tOpoyyEAI-o')).toBe(
     'tOpoyyEAI-o'
   );
   expect(
-    parseVideoIdFromYoutubeVideoUrl('https://youtu.be/tOpoyyEAI-o&t=1')
+    parseVideoIdFromYouTubeVideoUrl('https://youtu.be/tOpoyyEAI-o&t=1')
   ).toBe('tOpoyyEAI-o');
-  expect(parseVideoIdFromYoutubeVideoUrl('youtu.be/tOpoyyEAI-o')).toBe(
+  expect(parseVideoIdFromYouTubeVideoUrl('youtu.be/tOpoyyEAI-o')).toBe(
     'tOpoyyEAI-o'
   );
-  expect(parseVideoIdFromYoutubeVideoUrl('iyoutu.be/tOpoyyEAI-o')).toBe(null);
+  expect(parseVideoIdFromYouTubeVideoUrl('iyoutu.be/tOpoyyEAI-o')).toBe(null);
 
   expect(
-    parseVideoIdFromYoutubeVideoUrl('https://www.youtube.com/embed/tOpoyyEAI-o')
+    parseVideoIdFromYouTubeVideoUrl('https://www.youtube.com/embed/tOpoyyEAI-o')
   ).toBe('tOpoyyEAI-o');
   expect(
-    parseVideoIdFromYoutubeVideoUrl(
+    parseVideoIdFromYouTubeVideoUrl(
       'https://www.youtube.com/embed/tOpoyyEAI-o&t=1'
     )
   ).toBe('tOpoyyEAI-o');
-  expect(parseVideoIdFromYoutubeVideoUrl('youtube.com/embed/tOpoyyEAI-o')).toBe(
+  expect(parseVideoIdFromYouTubeVideoUrl('youtube.com/embed/tOpoyyEAI-o')).toBe(
     'tOpoyyEAI-o'
   );
   expect(
-    parseVideoIdFromYoutubeVideoUrl('iyoutube.com/embed/tOpoyyEAI-o')
+    parseVideoIdFromYouTubeVideoUrl('iyoutube.com/embed/tOpoyyEAI-o')
   ).toBe(null);
 });

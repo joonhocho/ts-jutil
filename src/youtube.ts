@@ -6,7 +6,7 @@ const watchPattern = /\byoutube\.com\/watch\?v=([\w-]+)\b/;
 const shortUrlPattern = /\byoutu\.be\/([\w-]+)\b/;
 const embedPattern = /\byoutube\.com\/embed\/([\w-]+)\b/;
 
-export const parseVideoIdFromYoutubeVideoUrl = (url: string): string | null => {
+export const parseVideoIdFromYouTubeVideoUrl = (url: string): string | null => {
   if (url) {
     let match = url.match(watchPattern);
     if (match) {
