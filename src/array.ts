@@ -269,7 +269,7 @@ export const mapN = <T, A extends any[]>(
       }
     } else {
       for (let i = 0; i < count; i += 1) {
-        results[i] = fn.call(thisp, i);
+        results[i] = (fn as any).call(thisp, i);
       }
     }
   }
