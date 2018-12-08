@@ -1,6 +1,9 @@
 import {
+  average,
   formatShortNumber,
   intRange,
+  max,
+  min,
   parseFloatInRange,
   parseIntInRange,
 } from './number';
@@ -74,4 +77,19 @@ test('formatShortNumber', () => {
   expect(formatShortNumber(1000000000000)).toBe('1000B');
   expect(formatShortNumber(10000000000000)).toBe('10000B');
   expect(formatShortNumber(100000000000000)).toBe('100000B');
+});
+
+test('average', () => {
+  expect(average([1, 2, 3, 4])).toEqual(2.5);
+  expect(average([])).toBeNull();
+});
+
+test('min', () => {
+  expect(min([-1, 0, 1, 2, 3, 4])).toEqual(-1);
+  expect(min([])).toBeNull();
+});
+
+test('max', () => {
+  expect(max([-1, 0, 1, 2, 3, 4])).toEqual(4);
+  expect(max([])).toBeNull();
 });

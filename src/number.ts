@@ -1,30 +1,30 @@
-export const intRange = (min: number, max: number): number[] => {
+export const intRange = (mini: number, maxi: number): number[] => {
   // tslint:disable-next-line prefer-array-literal
-  const list = new Array(max - min + 1);
-  for (let i = min; i <= max; i += 1) {
-    list[i - min] = i;
+  const list = new Array(maxi - mini + 1);
+  for (let i = mini; i <= maxi; i += 1) {
+    list[i - mini] = i;
   }
   return list;
 };
 
 export const parseIntInRange = (
   str: string,
-  min?: number | null,
-  max?: number | null
+  mini?: number | null,
+  maxi?: number | null
 ): number | null => {
-  const mi = min == null ? Number.MIN_SAFE_INTEGER : min;
-  const ma = max == null ? Number.MAX_SAFE_INTEGER : max;
+  const mi = mini == null ? Number.MIN_SAFE_INTEGER : mini;
+  const ma = maxi == null ? Number.MAX_SAFE_INTEGER : maxi;
   const v = parseInt(str, 10);
   return v >= mi && v <= ma ? v : null;
 };
 
 export const parseFloatInRange = (
   str: string,
-  min?: number | null,
-  max?: number | null
+  mini?: number | null,
+  maxi?: number | null
 ): number | null => {
-  const mi = min == null ? -Number.MAX_VALUE : min;
-  const ma = max == null ? Number.MAX_VALUE : max;
+  const mi = mini == null ? -Number.MAX_VALUE : mini;
+  const ma = maxi == null ? Number.MAX_VALUE : maxi;
   const v = parseFloat(str);
   return v >= mi && v <= ma ? v : null;
 };
@@ -59,4 +59,46 @@ export const formatShortNumber = (
     abs = Math[round]((abs * pp) / divisor) / pp;
   }
   return `${sign}${abs}${units[len - 1]}`;
+};
+
+export const average = (ns: number[]): number | null => {
+  const len = ns.length;
+  if (len === 0) {
+    return null;
+  }
+  let sum = 0;
+  for (let i = 0; i < len; i += 1) {
+    sum += ns[i];
+  }
+  return sum / len;
+};
+
+export const min = (ns: number[]): number | null => {
+  const len = ns.length;
+  if (len === 0) {
+    return null;
+  }
+  let m = Number.MAX_VALUE;
+  for (let i = 0; i < len; i += 1) {
+    const n = ns[i];
+    if (n < m) {
+      m = n;
+    }
+  }
+  return m;
+};
+
+export const max = (ns: number[]): number | null => {
+  const len = ns.length;
+  if (len === 0) {
+    return null;
+  }
+  let m = Number.MIN_VALUE;
+  for (let i = 0; i < len; i += 1) {
+    const n = ns[i];
+    if (n > m) {
+      m = n;
+    }
+  }
+  return m;
 };
