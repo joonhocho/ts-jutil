@@ -1,6 +1,8 @@
 import * as array from './array';
+import * as emitter from './emitter';
 import * as equal from './equal';
 import * as event from './event';
+import * as format from './format';
 import * as func from './func';
 import * as is from './is';
 import * as json from './json';
@@ -9,12 +11,17 @@ import * as object from './object';
 import * as promise from './promise';
 import * as prototype from './prototype';
 import * as string from './string';
+import * as timestamp from './timestamp';
 import * as url from './url';
+import * as value from './value';
+import * as youtube from './youtube';
 
 export {
   array,
+  emitter,
   equal,
   event,
+  format,
   func,
   is,
   json,
@@ -23,5 +30,8 @@ export {
   promise,
   prototype,
   string,
+  timestamp,
   url,
+  value,
+  youtube,
 };
