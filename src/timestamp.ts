@@ -68,8 +68,26 @@ export class Timestamp {
   public static now = (): Timestamp =>
     new Timestamp(Timestamp.getMilliseconds(), Timestamp.currentNanoseconds());
 
-  public static from = (ms: number | string | Date, ns = 0): Timestamp =>
-    new Timestamp(new Date(ms).getTime(), ns);
+  public static from = (
+    ms: number | string | Date,
+    ns = 0
+  ): Timestamp | null => {
+    const t = new Date(ms).getTime();
+    return t === t ? new Timestamp(t, ns) : null;
+  };
+
+  public static parseNanoseconds = (str: string): Timestamp | null => {
+    const ms = parseInt(str.substring(0, str.length - 6), 10);
+    const ns = parseInt(str.substring(str.length - 6), 10);
+    return ms === ms && ns === ns ? new Timestamp(ms, ns) : null;
+  };
+
+  public static parseMilliseconds = (str: string): Timestamp | null => {
+    const [mss, nss] = str.split('.');
+    const ms = parseInt(mss, 10);
+    const ns = parseInt(nss, 10);
+    return ms === ms && ns === ns ? new Timestamp(ms, ns) : null;
+  };
 
   constructor(public milliseconds: number, public nanoseconds: number) {}
 

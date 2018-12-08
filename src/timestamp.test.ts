@@ -18,13 +18,35 @@ test('Timestamp.currentNanoseconds()', () => {
 
 test('Timestamp.from()', () => {
   const now = new Date();
-  const ts = Timestamp.from(now);
+  const ts = Timestamp.from(now)!;
   expect(ts).toBeInstanceOf(Timestamp);
   expect(ts.milliseconds).toBe(now.getTime());
   expect(ts.nanoseconds).toBe(0);
-  expect(Timestamp.from(now, 1).nanoseconds).toBe(1);
-  expect(Timestamp.from(now.getTime()).equal(ts)).toBe(true);
-  expect(Timestamp.from(now.toISOString()).equal(ts)).toBe(true);
+  expect(Timestamp.from(now, 1)!.nanoseconds).toBe(1);
+  expect(Timestamp.from(now.getTime())!.equal(ts)).toBe(true);
+  expect(Timestamp.from(now.toISOString())!.equal(ts)).toBe(true);
+});
+
+test('Timestamp.parseNanoseconds()', () => {
+  const ts = Timestamp.now();
+  expect(Timestamp.parseNanoseconds(ts.toNanosecondsString())).toBeInstanceOf(
+    Timestamp
+  );
+  expect(Timestamp.parseNanoseconds(ts.toNanosecondsString())!.equal(ts)).toBe(
+    true
+  );
+  expect(Timestamp.parseNanoseconds('')).toBeNull();
+});
+
+test('Timestamp.parseMilliseconds()', () => {
+  const ts = Timestamp.now();
+  expect(Timestamp.parseMilliseconds(ts.toMillisecondsString())).toBeInstanceOf(
+    Timestamp
+  );
+  expect(
+    Timestamp.parseMilliseconds(ts.toMillisecondsString())!.equal(ts)
+  ).toBe(true);
+  expect(Timestamp.parseMilliseconds('')).toBeNull();
 });
 
 test('Timestamp.now()', () => {
