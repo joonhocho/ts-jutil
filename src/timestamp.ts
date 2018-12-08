@@ -68,6 +68,9 @@ export class Timestamp {
   public static now = (): Timestamp =>
     new Timestamp(Timestamp.getMilliseconds(), Timestamp.currentNanoseconds());
 
+  public static from = (ms: number | string | Date, ns = 0): Timestamp =>
+    new Timestamp(new Date(ms).getTime(), ns);
+
   constructor(public milliseconds: number, public nanoseconds: number) {}
 
   public toDate(): Date {
@@ -120,5 +123,12 @@ export class Timestamp {
 
   public clone(): Timestamp {
     return new Timestamp(this.milliseconds, this.nanoseconds);
+  }
+
+  public equal(ts: Timestamp): boolean {
+    return (
+      ts.milliseconds === this.milliseconds &&
+      ts.nanoseconds === this.nanoseconds
+    );
   }
 }

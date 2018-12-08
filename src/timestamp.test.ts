@@ -16,6 +16,17 @@ test('Timestamp.currentNanoseconds()', () => {
   }
 });
 
+test('Timestamp.from()', () => {
+  const now = new Date();
+  const ts = Timestamp.from(now);
+  expect(ts).toBeInstanceOf(Timestamp);
+  expect(ts.milliseconds).toBe(now.getTime());
+  expect(ts.nanoseconds).toBe(0);
+  expect(Timestamp.from(now, 1).nanoseconds).toBe(1);
+  expect(Timestamp.from(now.getTime()).equal(ts)).toBe(true);
+  expect(Timestamp.from(now.toISOString()).equal(ts)).toBe(true);
+});
+
 test('Timestamp.now()', () => {
   const ts = Timestamp.now();
   expect(ts).toBeInstanceOf(Timestamp);
@@ -87,4 +98,5 @@ test('Timestamp().clone()', () => {
   expect(clone.milliseconds).toBe(ts.milliseconds);
   expect(clone.nanoseconds).toBe(ts.nanoseconds);
   expect(clone).toBeInstanceOf(Timestamp);
+  expect(clone.equal(ts)).toBe(true);
 });
