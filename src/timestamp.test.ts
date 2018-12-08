@@ -59,3 +59,23 @@ test('Timestamp().toISOString()', () => {
   const ts = new Timestamp(1234567, 8910);
   expect(ts.toISOString()).toMatch(new Date(1234567).toISOString());
 });
+
+test('Timestamp().addSeconds()', () => {
+  const ts = new Timestamp(1234567, 8910).addSeconds(5);
+  expect(ts.milliseconds).toBe(1239567);
+});
+
+test('Timestamp().addMinutes()', () => {
+  const ts = new Timestamp(1234567, 8910).addMinutes(5);
+  expect(ts.milliseconds).toBe(1234567 + 5 * 60 * 1000);
+});
+
+test('Timestamp().addHours()', () => {
+  const ts = new Timestamp(1234567, 8910).addHours(5);
+  expect(ts.milliseconds).toBe(1234567 + 5 * 60 * 60 * 1000);
+});
+
+test('Timestamp().addDays()', () => {
+  const ts = new Timestamp(1234567, 8910).addDays(5);
+  expect(ts.milliseconds).toBe(1234567 + 5 * 24 * 60 * 60 * 1000);
+});

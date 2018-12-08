@@ -17,6 +17,10 @@ const avgNano = (a: number, b: number): number => {
   return (n1 + n0) / 2;
 };
 
+const minuteInMs = 60 * 1000;
+const hourInMs = 60 * minuteInMs;
+const dayInMs = 24 * hourInMs;
+
 export class Timestamp {
   public static getMilliseconds = Date.now;
 
@@ -92,5 +96,25 @@ export class Timestamp {
 
   public toISOString(): string {
     return this.toDate().toISOString();
+  }
+
+  public addSeconds(seconds: number): Timestamp {
+    this.milliseconds += seconds * 1000;
+    return this;
+  }
+
+  public addMinutes(minutes: number): Timestamp {
+    this.milliseconds += minutes * minuteInMs;
+    return this;
+  }
+
+  public addHours(hours: number): Timestamp {
+    this.milliseconds += hours * hourInMs;
+    return this;
+  }
+
+  public addDays(days: number): Timestamp {
+    this.milliseconds += days * dayInMs;
+    return this;
   }
 }
