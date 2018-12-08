@@ -117,4 +117,8 @@ export class Timestamp {
     this.milliseconds += days * dayInMs;
     return this;
   }
+
+  public clone(): Timestamp {
+    return new Timestamp(this.milliseconds, this.nanoseconds);
+  }
 }

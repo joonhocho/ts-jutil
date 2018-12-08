@@ -79,3 +79,12 @@ test('Timestamp().addDays()', () => {
   const ts = new Timestamp(1234567, 8910).addDays(5);
   expect(ts.milliseconds).toBe(1234567 + 5 * 24 * 60 * 60 * 1000);
 });
+
+test('Timestamp().clone()', () => {
+  const ts = Timestamp.now();
+  const clone = ts.clone();
+  expect(clone).not.toBe(ts);
+  expect(clone.milliseconds).toBe(ts.milliseconds);
+  expect(clone.nanoseconds).toBe(ts.nanoseconds);
+  expect(clone).toBeInstanceOf(Timestamp);
+});
