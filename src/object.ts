@@ -261,15 +261,11 @@ export const assignKeys = <
   return out;
 };
 
-export const assignDefined = <
-  T extends AnyObject,
-  D extends AnyObject,
-  K extends string & keyof T
->(
+export const assignDefined = <T extends AnyObject, D extends AnyObject>(
   to: D,
   from: T,
-  keys: K[] = getKeys(from) as K[]
-): ExtendObjects<D, Pick<T, K & keyof T>> => {
+  keys = getKeys(from)
+): ExtendObjects<D, T> => {
   const len = keys.length;
   for (let i = 0; i < len; i += 1) {
     const key = keys[i];
@@ -278,7 +274,7 @@ export const assignDefined = <
       to[key] = v;
     }
   }
-  return to;
+  return to as any;
 };
 
 export const copy = <
