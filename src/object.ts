@@ -24,9 +24,9 @@ export const hasOwnProp = (o: any, k: PropKey): boolean =>
 
 export const isEmpty = (obj: AnyObject): boolean => !getKeys(obj).length;
 
-export const getKeys: <T>(
+export const getKeys: (<T>(
   obj: T
-) => Array<keyof T & string> = Object.keys as any;
+) => Array<string & keyof T>) = Object.keys as any;
 
 export { getKeys as keys };
 
@@ -259,6 +259,26 @@ export const assignKeys = <
     }
   }
   return out;
+};
+
+export const assignDefined = <
+  T extends AnyObject,
+  D extends AnyObject,
+  K extends string & keyof T
+>(
+  to: D,
+  from: T,
+  keys: K[] = getKeys(from) as K[]
+): ExtendObjects<D, Pick<T, K & keyof T>> => {
+  const len = keys.length;
+  for (let i = 0; i < len; i += 1) {
+    const key = keys[i];
+    const v = from[key];
+    if (v !== undefined) {
+      to[key] = v;
+    }
+  }
+  return to;
 };
 
 export const copy = <
