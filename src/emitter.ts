@@ -1,7 +1,7 @@
 export class Emitter<T, R = void> {
   private fns: Array<(data: T) => R> = [];
 
-  public on(fn: (data: T) => R): (() => boolean) {
+  public on(fn: (data: T) => R): () => boolean {
     const { fns } = this;
     fns.push(fn);
     return (): boolean => this.off(fn);

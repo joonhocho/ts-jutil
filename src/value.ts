@@ -5,7 +5,7 @@ export class Value<T> {
 
   constructor(protected _value?: T) {}
 
-  public on(fn: ValueListener<T>): (() => boolean) {
+  public on(fn: ValueListener<T>): () => boolean {
     const { fns } = this;
     fns.push(fn);
     return (): boolean => this.off(fn);

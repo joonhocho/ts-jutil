@@ -24,9 +24,9 @@ export const hasOwnProp = (o: any, k: PropKey): boolean =>
 
 export const isEmpty = (obj: AnyObject): boolean => !getKeys(obj).length;
 
-export const getKeys: (<T>(
+export const getKeys: <T>(
   obj: T
-) => Array<string & keyof T>) = Object.keys as any;
+) => Array<string & keyof T> = Object.keys as any;
 
 export { getKeys as keys };
 
