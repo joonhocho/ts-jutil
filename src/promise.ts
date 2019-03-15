@@ -131,10 +131,13 @@ export const allValues = <T extends { [key: string]: any }>(
 
 export const promiseAll = allValues;
 
-export class DeferredPromise<T> {
+export class TimeoutError extends Error {}
+
+// tslint:disable-next-line max-classes-per-file
+export class DeferredPromise<T, E = any> {
   protected readonly _promise: Promise<T>;
   protected _resolve: ((value: T | PromiseLike<T>) => void) | null = null;
-  protected _reject: ((reason?: any) => void) | null = null;
+  protected _reject: ((reason?: E | TimeoutError) => void) | null = null;
   protected _tid?: any; // number | NodeJS.Timer
   protected _fulfilled = false;
 
@@ -148,7 +151,7 @@ export class DeferredPromise<T> {
     if (timeout) {
       this._tid = setTimeout(() => {
         if (this._reject) {
-          this.reject(new Error('timeout'));
+          this.reject(new TimeoutError('timeout'));
         }
       }, timeout);
     }
@@ -163,20 +166,25 @@ export class DeferredPromise<T> {
     }
   }
 
-  public reject(...args: any): void {
+  public reject(reason: E | TimeoutError): void {
     const { _reject } = this;
     if (_reject) {
       this.clear();
-      _reject(...args);
+      _reject(reason);
     }
   }
 
-  public then(...args: any): Promise<T> {
-    return this._promise.then(...args);
+  public then<T1 = T, T2 = never>(
+    onFulfilled?: ((value: T) => T1 | PromiseLike<T1>) | undefined | null,
+    onRejected?: ((reason: any) => T2 | PromiseLike<T2>) | undefined | null
+  ): Promise<T1 | T2> {
+    return this._promise.then(onFulfilled, onRejected);
   }
 
-  public catch(...args: any): Promise<T> {
-    return this._promise.catch(...args);
+  public catch<T1 = never>(
+    onRejected?: ((reason: any) => T1 | PromiseLike<T1>) | undefined | null
+  ): Promise<T | T1> {
+    return this._promise.catch(onRejected);
   }
 
   private clear(): void {
