@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "TypeScript library of simple utility functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,8 +10,9 @@
     "format": "prettier --write \"./*.{js,jsx,ts,tsx}\" \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "tslint -c ./tslint.json \"src/**/*\"",
     "lint:fix": "tslint --fix -c ./tslint.json \"src/**/*\"",
-    "start": "yarn clear && yarn format && yarn lint:fix && yarn test && yarn build",
     "prepublish": "yarn start",
+    "reinstall": "rm -rf ./node_modules yarn.lock && yarn",
+    "start": "yarn clear && yarn format && yarn lint:fix && yarn test && yarn build",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
