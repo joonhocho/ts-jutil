@@ -524,3 +524,46 @@ export const getterMap = <TData>(mapping: {
     return dest;
   };
 };
+
+export const sortedCopy = <T extends { [key: string]: any }>(obj: T): T => {
+  let keys = Object.keys(obj);
+  const len = keys.length;
+  const dest = {} as T;
+  if (len) {
+    keys = keys.sort();
+    for (let i = 0; i < len; i += 1) {
+      const key = keys[i];
+      dest[key] = obj[key];
+    }
+  }
+  return dest;
+};
+
+export const deepSortedCopy = <T>(obj: T): T => {
+  if (obj == null || typeof obj !== 'object') {
+    // primitive
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(deepSortedCopy) as any;
+  }
+
+  const { constructor } = obj;
+  if (constructor != null && constructor !== Object) {
+    return obj;
+  }
+
+  let keys = Object.keys(obj);
+  const len = keys.length;
+  const dest = {} as T;
+  if (len) {
+    keys = keys.sort();
+    for (let i = 0; i < len; i += 1) {
+      const key = keys[i];
+      (dest as any)[key] = deepSortedCopy((obj as any)[key]);
+    }
+  }
+
+  return dest;
+};
