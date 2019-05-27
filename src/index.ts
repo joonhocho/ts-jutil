@@ -1,5 +1,6 @@
 import * as array from './array';
 import * as base64 from './base64';
+import * as date from './date';
 import * as emitter from './emitter';
 import * as equal from './equal';
 import * as event from './event';
@@ -20,6 +21,7 @@ import * as youtube from './youtube';
 export {
   array,
   base64,
+  date,
   emitter,
   equal,
   event,
