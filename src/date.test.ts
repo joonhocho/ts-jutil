@@ -34,8 +34,8 @@ test('shortFromNow', () => {
   const now = Date.now();
   expect(shortFromNow(now)).toBe('now');
   expect(shortFromNow(now - 1000)).toBe('-1s');
-  expect(shortFromNow(now - 10001)).toBe('-10s');
-  expect(shortFromNow(now + 10001)).toBe('+10s');
+  expect(shortFromNow(now - 10100)).toBe('-10s');
+  expect(shortFromNow(now + 10100)).toBe('+10s');
   expect(shortFromNow(now - 60 * 1000)).toBe('-1m');
   expect(shortFromNow(now - 10 * 60 * 1000)).toBe('-10m');
   expect(shortFromNow(now - 60 * 60 * 1000)).toBe('-1h');
