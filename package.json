@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "TypeScript library of simple utility functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
