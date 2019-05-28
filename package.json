@@ -11,7 +11,6 @@
     "lint": "tslint -c ./tslint.json \"src/**/*\"",
     "lint:fix": "tslint --fix -c ./tslint.json \"src/**/*\"",
     "precommit": "yarn rerun",
-    "prepublish": "yarn rerun",
     "reinstall": "rm -rf ./node_modules yarn.lock && yarn",
     "rerun": "yarn clean && yarn format && yarn lint:fix && yarn test && yarn build",
     "start": "yarn test",
