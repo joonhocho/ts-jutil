@@ -3,6 +3,7 @@ import {
   capitalizeWords,
   collapseWSMultiLine,
   collapseWSSingleLine,
+  escapeHtmlChars,
   escapeRegExpChars,
   fromBase64,
   pad,
@@ -13,6 +14,7 @@ import {
   stringify,
   toBase64,
   truncate,
+  unescapeHtmlChars,
 } from './string';
 
 test('stringify', () => {
@@ -43,10 +45,15 @@ describe('split', () => {
   });
 });
 
-describe('escapeRegExpChars', () => {
-  test('should escape RegExp Characters', () => {
-    expect(escapeRegExpChars('-')).toBe('\\-');
-  });
+test('escapeHtmlChars / unescapeHtmlChars', () => {
+  const src = '<script>&nbsp;</script>';
+  const esc = escapeHtmlChars(src);
+  expect(esc).toBe('&lt;script&gt;&amp;nbsp;&lt;/script&gt;');
+  expect(unescapeHtmlChars(esc)).toBe(src);
+});
+
+test('escapeRegExpChars', () => {
+  expect(escapeRegExpChars('-')).toBe('\\-');
 });
 
 describe('collapseWSSingleLine', () => {
