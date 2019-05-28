@@ -8,6 +8,7 @@ import {
   pad,
   padEnd,
   padStart,
+  repeatString,
   split,
   stringify,
   toBase64,
@@ -101,6 +102,12 @@ test('base64', () => {
   const s = '테스트test1234';
   expect(fromBase64(toBase64(s))).toBe(s);
   expect(toBase64(s)).toBe('7YWM7Iqk7Yq4dGVzdDEyMzQ=');
+});
+
+test('repeatString', () => {
+  expect(repeatString('123', 0)).toBe('');
+  expect(repeatString('123', 1)).toBe('123');
+  expect(repeatString('123', 2)).toBe('123123');
 });
 
 test('pad', () => {
