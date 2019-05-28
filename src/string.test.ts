@@ -5,6 +5,9 @@ import {
   collapseWSSingleLine,
   escapeRegExpChars,
   fromBase64,
+  pad,
+  padEnd,
+  padStart,
   split,
   stringify,
   toBase64,
@@ -98,4 +101,36 @@ test('base64', () => {
   const s = '테스트test1234';
   expect(fromBase64(toBase64(s))).toBe(s);
   expect(toBase64(s)).toBe('7YWM7Iqk7Yq4dGVzdDEyMzQ=');
+});
+
+test('pad', () => {
+  expect(pad('123', 0)).toBe('');
+  expect(pad('123', 1)).toBe('1');
+  expect(pad('123', 2)).toBe('12');
+  expect(pad('123', 3)).toBe('123');
+  expect(pad('123', 4)).toBe('1231');
+  expect(pad('123', 5)).toBe('12312');
+  expect(pad('123', 6)).toBe('123123');
+});
+
+test('padStart', () => {
+  expect(padStart('abc', 0, '123')).toBe('abc');
+  expect(padStart('abc', 1, '123')).toBe('abc');
+  expect(padStart('abc', 2, '123')).toBe('abc');
+  expect(padStart('abc', 3, '123')).toBe('abc');
+  expect(padStart('abc', 4, '123')).toBe('1abc');
+  expect(padStart('abc', 5, '123')).toBe('12abc');
+  expect(padStart('abc', 6, '123')).toBe('123abc');
+  expect(padStart('abc', 7, '123')).toBe('1231abc');
+});
+
+test('padEnd', () => {
+  expect(padEnd('abc', 0, '123')).toBe('abc');
+  expect(padEnd('abc', 1, '123')).toBe('abc');
+  expect(padEnd('abc', 2, '123')).toBe('abc');
+  expect(padEnd('abc', 3, '123')).toBe('abc');
+  expect(padEnd('abc', 4, '123')).toBe('abc1');
+  expect(padEnd('abc', 5, '123')).toBe('abc12');
+  expect(padEnd('abc', 6, '123')).toBe('abc123');
+  expect(padEnd('abc', 7, '123')).toBe('abc1231');
 });

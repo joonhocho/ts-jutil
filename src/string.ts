@@ -82,3 +82,38 @@ export const toBase64 = (s: string): string =>
 
 export const fromBase64 = (s: string): string =>
   Buffer.from(s, 'base64').toString('utf8');
+
+export const repeatString = ''.repeat
+  ? (s: string, n: number): string => (n === 0 ? '' : n === 1 ? s : s.repeat(n))
+  : (s: string, n: number): string =>
+      n === 0 ? '' : n === 1 ? s : Array(n + 1).join(s);
+
+export const pad = (padString: string, targetLength: number): string =>
+  padString.length === targetLength
+    ? padString
+    : repeatString(
+        padString,
+        Math.ceil(targetLength / padString.length)
+      ).substring(0, targetLength);
+
+export const padStart = ''.padStart
+  ? (s: string, length: number, padString = ' '): string =>
+      s.padStart(length, padString)
+  : (s: string, length: number, padString = ' '): string => {
+      const dLength = length - s.length;
+      if (dLength > 0) {
+        return `${pad(padString, dLength)}${s}`;
+      }
+      return s;
+    };
+
+export const padEnd = ''.padEnd
+  ? (s: string, length: number, padString = ' '): string =>
+      s.padEnd(length, padString)
+  : (s: string, length: number, padString = ' '): string => {
+      const dLength = length - s.length;
+      if (dLength > 0) {
+        return `${s}${pad(padString, dLength)}`;
+      }
+      return s;
+    };

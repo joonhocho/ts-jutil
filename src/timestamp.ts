@@ -1,4 +1,5 @@
 import { average } from 'src/number';
+import { padStart } from 'src/string';
 
 const getNumPairs = (len: number): Array<[number, number]> => {
   const a: Array<[number, number]> = [];
@@ -100,15 +101,19 @@ export class Timestamp {
   }
 
   public toMillisecondsString(): string {
-    return `${this.milliseconds}.${this.nanoseconds
-      .toString()
-      .padStart(6, '0')}`;
+    return `${this.milliseconds}.${padStart(
+      this.nanoseconds.toString(),
+      6,
+      '0'
+    )}`;
   }
 
   public toNanosecondsString(): string {
-    return `${this.milliseconds}${this.nanoseconds
-      .toString()
-      .padStart(6, '0')}`;
+    return `${this.milliseconds}${padStart(
+      this.nanoseconds.toString(),
+      6,
+      '0'
+    )}`;
   }
 
   public toString(): string {
