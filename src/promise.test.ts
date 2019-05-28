@@ -18,7 +18,7 @@ const promiseLike = (v: any) => ({
 test('sleep', async () => {
   const t = Date.now();
   await sleep(150);
-  expect(Date.now() - t).toBeGreaterThanOrEqual(150);
+  expect(Date.now() - t).toBeGreaterThanOrEqual(140);
 });
 
 test('mapPromise', async () => {
