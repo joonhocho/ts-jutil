@@ -1,35 +1,61 @@
-export class Emitter<T, R = void> {
-  private fns: Array<(data: T) => R> = [];
+export type ListenerType<T, R> = (data: T, acc: R | null) => R;
+export type OffFunction = () => boolean;
 
-  public on(fn: (data: T) => R): () => boolean {
-    const { fns } = this;
-    fns.push(fn);
+export class Emitter<T, R = void> {
+  private _fns: Array<ListenerType<T, R>> = [];
+
+  public on(fn: ListenerType<T, R>): OffFunction {
+    this._fns.push(fn);
     return (): boolean => this.off(fn);
   }
 
-  public off(fn: (data: T) => R): boolean {
-    const { fns } = this;
-    const i = fns.indexOf(fn);
+  public prepend(fn: ListenerType<T, R>): OffFunction {
+    this._fns.unshift(fn);
+    return (): boolean => this.off(fn);
+  }
+
+  public once(fn: ListenerType<T, R>): OffFunction {
+    let off: OffFunction | null = this.on((data, acc) => {
+      const r = fn(data, acc);
+      if (off) {
+        off();
+        off = null;
+      }
+      return r;
+    });
+    return off;
+  }
+
+  public off(fn: ListenerType<T, R>): boolean {
+    const { _fns } = this;
+    const i = _fns.indexOf(fn);
     if (i >= 0) {
-      fns.splice(i, 1);
+      _fns.splice(i, 1);
       return true;
     }
     return false;
   }
 
-  public emit(data: T): void {
-    const fns = this.fns.slice();
+  public emit(data: T): R | null {
+    const fns = this._fns.slice();
     const len = fns.length;
+    let acc: R | null = null;
     for (let i = 0; i < len; i += 1) {
-      fns[i](data);
+      acc = fns[i](data, acc);
     }
+    return acc;
   }
 
   public emitGet(data: T): R[] {
-    return this.fns.slice().map((fn) => fn(data));
+    let acc: R | null = null;
+    return this._fns.slice().map((fn) => (acc = fn(data, acc)));
+  }
+
+  public count(): number {
+    return this._fns.length;
   }
 
   public clear(): void {
-    this.fns.length = 0;
+    this._fns.length = 0;
   }
 }
