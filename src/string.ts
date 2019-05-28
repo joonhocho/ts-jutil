@@ -32,6 +32,18 @@ export const split = (list: string | string[], delimiter = ','): string[] => {
 export const escapeRegExpChars = (str: string): string =>
   str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
+// https://stackoverflow.com/a/5499821/692528
+const tagsToReplace: { [key: string]: string } = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+};
+
+const replaceTag = (tag: string): string => tagsToReplace[tag] || tag;
+
+export const escapeHtmlChars = (str: string): string =>
+  str.replace(/[&<>]/g, replaceTag);
+
 const allWS = /\s+/g;
 
 export const collapseWSSingleLine = (s: string): string => {
