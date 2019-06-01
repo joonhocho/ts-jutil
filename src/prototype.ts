@@ -1,11 +1,12 @@
+import { OverwriteProps } from 'tsdef';
 import { hasOwnProp } from './object';
-import { Diff, ExtendObjects, PropKey } from './type';
+import { PropKey } from './type';
 
 export const defineProp = <T extends object, K extends string, V>(
   obj: T,
   key: K,
   value: V
-): ExtendObjects<T, { [k in K]: V }> =>
+): OverwriteProps<T, { [k in K]: V }> =>
   Object.defineProperty(obj, key, {
     configurable: true,
     enumerable: true,
@@ -17,7 +18,7 @@ export const defineMethod = <T extends object, K extends string, V>(
   obj: T,
   key: K,
   value: V
-): ExtendObjects<T, { [k in K]: V }> =>
+): OverwriteProps<T, { [k in K]: V }> =>
   Object.defineProperty(obj, key, {
     configurable: true,
     enumerable: false,
@@ -44,7 +45,7 @@ export const defineLazyProp = <T extends object, K extends string, V>(
     enumerable: boolean;
     configurable: boolean;
   } = defaultPropDesc
-): ExtendObjects<T, { [k in K]: V }> =>
+): OverwriteProps<T, { [k in K]: V }> =>
   Object.defineProperty(obj, key, {
     get(): V {
       // Use 'this' instead of obj so that obj can be a prototype.
@@ -66,7 +67,7 @@ export const inheritProp = <T, F, K extends keyof F, TK extends PropKey>(
   from: F,
   fromKey: K,
   toKey?: TK
-): ExtendObjects<
+): OverwriteProps<
   T,
   TK extends string ? { [P in TK]: F[K] } : { [P in keyof F]: F[P] }
 > => {
@@ -81,7 +82,7 @@ export const inheritProps = <T, F, E extends { [key: string]: 1 }>(
   to: T,
   from: F,
   excludeKeys?: E
-): ExtendObjects<T, Pick<F, Diff<keyof F, keyof T | keyof E>>> => {
+): OverwriteProps<T, Pick<F, Exclude<keyof F, keyof T | keyof E>>> => {
   const fromKeys = Object.getOwnPropertyNames(from);
   const len = fromKeys.length;
 

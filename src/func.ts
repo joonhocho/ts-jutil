@@ -1,4 +1,4 @@
-import { ManyArgsFunc } from './type';
+import { AnyFunction } from 'tsdef';
 
 export const noop = (): void => {
   /*noop*/
@@ -58,9 +58,9 @@ export const memoize = <A extends any[], R>(
 
 // TODO narrow down type like above
 export const memoizeCompose = (
-  argFns: ManyArgsFunc[],
-  fn: ManyArgsFunc
-): ManyArgsFunc => {
+  argFns: AnyFunction[],
+  fn: AnyFunction
+): AnyFunction => {
   const len = argFns.length;
   if (len > 1) {
     const memoized1 = memoize(fn);

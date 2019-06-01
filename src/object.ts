@@ -1,13 +1,6 @@
+import { AnyObject, OverwriteProps, UnionObjects, ValueOf } from 'tsdef';
 import { isDefined, isNotNil } from './is';
-import {
-  AnyObject,
-  ExtendObjects,
-  PropKey,
-  UnionObjects,
-  ValueOf,
-  WithoutNil,
-  WithoutUndefined,
-} from './type';
+import { WithoutNil, WithoutUndefined } from './type';
 
 const { hasOwnProperty } = Object.prototype;
 
@@ -17,7 +10,7 @@ export const isObject = (o: any): boolean =>
 export const isPlain = (o: any): boolean =>
   isObject(o) && (o.constructor === Object || o.constructor == null);
 
-export const hasOwnProp = (o: any, k: PropKey): boolean =>
+export const hasOwnProp = (o: any, k: keyof any): boolean =>
   typeof o.hasOwnProperty === 'function'
     ? o.hasOwnProperty(k)
     : hasOwnProperty.call(o, k);
@@ -49,7 +42,7 @@ export const filterKeys = <
   obj: T,
   keys: K[],
   dest: U = {} as any
-): ExtendObjects<U, Pick<T, K>> => {
+): OverwriteProps<U, Pick<T, K>> => {
   const out: any = dest;
   const len = keys.length;
   if (obj.hasOwnProperty) {
@@ -78,7 +71,7 @@ export const withoutKeys = <
   obj: T,
   excludeKeys: K[],
   dest: U = {} as any
-): ExtendObjects<U, Pick<T, Exclude<keyof T, K>>> => {
+): OverwriteProps<U, Pick<T, Exclude<keyof T, K>>> => {
   const out: any = dest;
   const keys = getKeys(obj);
   const len = keys.length;
@@ -169,7 +162,7 @@ export const map = <T extends AnyObject, U, D extends AnyObject>(
   fn: (value: T[keyof T], key: keyof T, obj: T) => U,
   thisp?: any,
   dest: D = {} as any
-): ExtendObjects<D, { [P in keyof T]: U }> => {
+): OverwriteProps<D, { [P in keyof T]: U }> => {
   const out: any = dest;
   const keys = getKeys(obj);
   const len = keys.length;
@@ -219,7 +212,7 @@ export const mapFilter = <T extends AnyObject, U, B, D extends AnyObject>(
   fn: (value: T[keyof T], key: keyof T, obj: T) => U,
   badValue: B,
   dest: D = {} as any
-): ExtendObjects<D, Partial<{ [P in keyof T]: Exclude<U, B> }>> => {
+): OverwriteProps<D, Partial<{ [P in keyof T]: Exclude<U, B> }>> => {
   const out: any = dest;
   const keys = getKeys(obj);
   const len = keys.length;
@@ -248,7 +241,7 @@ export const assignKeys = <
   to: D,
   from: T,
   keys: K[]
-): ExtendObjects<D, Pick<T, K & keyof T>> => {
+): OverwriteProps<D, Pick<T, K & keyof T>> => {
   const out: any = to;
   const len = keys.length;
   for (let i = 0; i < len; i += 1) {
@@ -265,16 +258,17 @@ export const assignDefined = <T extends AnyObject, D extends AnyObject>(
   to: D,
   from: T,
   keys = getKeys(from)
-): ExtendObjects<D, T> => {
+): OverwriteProps<D, T> => {
+  const d = (to as any) as OverwriteProps<D, T>;
   const len = keys.length;
   for (let i = 0; i < len; i += 1) {
     const key = keys[i];
     const v = from[key];
     if (v !== undefined) {
-      to[key] = v;
+      d[key] = v;
     }
   }
-  return to as any;
+  return d;
 };
 
 export const copy = <
@@ -286,7 +280,7 @@ export const copy = <
   from: T,
   keys?: K[],
   own = true
-): ExtendObjects<D, Pick<T, K & keyof T>> => {
+): OverwriteProps<D, Pick<T, K & keyof T>> => {
   const out: any = to;
   if (keys) {
     const len = keys.length;
@@ -419,7 +413,7 @@ export const setter = (
 
   if (createObject) {
     return <T extends AnyObject, U extends T>(obj: T, value: any): U => {
-      let scope = obj;
+      let scope: AnyObject = obj;
       let i = 0;
       const curPath = [];
       for (; i < lastIndex; i += 1) {
@@ -433,7 +427,7 @@ export const setter = (
   }
 
   return <T extends AnyObject, U extends T>(obj: T, value: any): U => {
-    let scope = obj;
+    let scope: AnyObject = obj;
     let i = 0;
     for (; i < lastIndex; i += 1) {
       const key = keys[i];
@@ -526,7 +520,7 @@ export const getterMap = <TData>(mapping: {
 };
 
 export const sortedCopy = <T extends { [key: string]: any }>(obj: T): T => {
-  let keys = Object.keys(obj);
+  let keys = getKeys(obj);
   const len = keys.length;
   const dest = {} as T;
   if (len) {
@@ -549,12 +543,12 @@ export const deepSortedCopy = <T>(obj: T): T => {
     return obj.map(deepSortedCopy) as any;
   }
 
-  const { constructor } = obj;
+  const { constructor } = obj as any;
   if (constructor != null && constructor !== Object) {
     return obj;
   }
 
-  let keys = Object.keys(obj);
+  let keys = getKeys(obj);
   const len = keys.length;
   const dest = {} as T;
   if (len) {

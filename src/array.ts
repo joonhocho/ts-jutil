@@ -551,7 +551,7 @@ export const unique = <T>(list: T[], toKey?: toKeyFn<T> | keyof T): T[] => {
       });
     default:
       return list.filter((x) => {
-        const k = x.toString();
+        const k = String(x);
         if (exists[k] === 1) {
           return false;
         }
@@ -805,7 +805,7 @@ export const uniqueWithIndexes = <T>(
       break;
     default:
       ulist = list.filter((x, i) => {
-        const k = x.toString();
+        const k = String(x);
         if (typeof keyToIndex[k] === 'number') {
           indexes[i] = keyToIndex[k];
           return false;

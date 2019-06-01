@@ -1,3 +1,5 @@
+import { getKeys } from './object';
+
 export type PromiseOfNewType<T, U> = T extends Promise<any> ? Promise<U> : U;
 
 export const sleep = (ms: number): Promise<void> =>
@@ -114,7 +116,7 @@ export type Unpromise<T> = T extends Promise<infer U> ? U : T;
 export const allValues = <T extends { [key: string]: any }>(
   mapOfPromise: T
 ): Promise<{ [K in keyof T]: Unpromise<T[K]> }> => {
-  const keys = Object.keys(mapOfPromise);
+  const keys = getKeys(mapOfPromise);
   const len = keys.length;
   const promises = new Array(len);
   for (let i = 0; i < len; i += 1) {
