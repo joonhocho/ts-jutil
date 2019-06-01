@@ -6,6 +6,7 @@ import * as equal from './equal';
 import * as event from './event';
 import * as format from './format';
 import * as func from './func';
+import * as http from './http';
 import * as is from './is';
 import * as json from './json';
 import * as number from './number';
@@ -29,6 +30,7 @@ export {
   event,
   format,
   func,
+  http,
   is,
   json,
   number,
