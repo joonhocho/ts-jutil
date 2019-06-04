@@ -80,3 +80,15 @@ export const memoizeCompose = (
     return memoized2.call(this, argFn(arg));
   };
 };
+
+export const lazyGet = <T>(fn: () => T): (() => T) => {
+  let cache: T | undefined;
+  let called = false;
+  return (): T => {
+    if (!called) {
+      called = true;
+      cache = fn();
+    }
+    return cache!;
+  };
+};

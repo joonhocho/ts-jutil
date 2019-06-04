@@ -47,7 +47,7 @@
     "prettier": "^1.17.1",
     "ts-jest": "^24.0.2",
     "tscpaths": "^0.0.9",
-    "tsdef": "^0.0.6",
+    "tsdef": "^0.0.7",
     "tslint": "^5.17.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",

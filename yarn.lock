@@ -3671,10 +3671,10 @@ tscpaths@^0.0.9:
     commander "^2.20.0"
     globby "^9.2.0"
 
-tsdef@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/tsdef/-/tsdef-0.0.6.tgz#242cf9d3124c4c3f30d5d282e9d4f39a777017ef"
-  integrity sha512-U8/PFn+L3RVkPyG5H7GrQhQDJ7VYURNNZh5gdpj6zWBESnIbozAv8Tcczt5JhIuyXktQY6WQzX2Wcq7knD5FGA==
+tsdef@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.npmjs.org/tsdef/-/tsdef-0.0.7.tgz#db8219041ce6a1cdf0eebd9a46dbc8c38e90dc87"
+  integrity sha512-p15muAaYu3VHuTm1ytS5HL06USvpgip5GdipanOdCjgQj2SPMY8VfTophkrIejDqhveC2T6dfl6G8EA+n1fozA==
 
 tslib@1.9.0:
   version "1.9.0"
