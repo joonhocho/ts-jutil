@@ -83,11 +83,10 @@ export const memoizeCompose = (
 
 export const lazyGet = <T>(fn: () => T): (() => T) => {
   let cache: T | undefined;
-  let called = false;
   return (): T => {
-    if (!called) {
-      called = true;
+    if (fn != null) {
       cache = fn();
+      fn = null as any; // tslint:disable-line no-parameter-reassignment
     }
     return cache!;
   };
