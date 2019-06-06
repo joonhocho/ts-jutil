@@ -13,9 +13,36 @@ import {
   split,
   stringify,
   toBase64,
+  trim,
+  trimLeft,
+  trimRight,
   truncate,
   unescapeHtmlChars,
 } from './string';
+
+test('trim', () => {
+  expect(trim('')).toBe('');
+  expect(trim('a a')).toBe('a a');
+  expect(trim(' a a')).toBe('a a');
+  expect(trim(' a a ')).toBe('a a');
+  expect(trim('  a a  ')).toBe('a a');
+});
+
+test('trimLeft', () => {
+  expect(trimLeft('')).toBe('');
+  expect(trimLeft('a a')).toBe('a a');
+  expect(trimLeft(' a a')).toBe('a a');
+  expect(trimLeft(' a a ')).toBe('a a ');
+  expect(trimLeft('  a a  ')).toBe('a a  ');
+});
+
+test('trimRight', () => {
+  expect(trimRight('')).toBe('');
+  expect(trimRight('a a')).toBe('a a');
+  expect(trimRight(' a a')).toBe(' a a');
+  expect(trimRight(' a a ')).toBe(' a a');
+  expect(trimRight('  a a  ')).toBe('  a a');
+});
 
 test('stringify', () => {
   expect(stringify({ a: 1 })).toBe('{\n  "a": 1\n}');

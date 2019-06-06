@@ -1,5 +1,16 @@
 import { isTruthy } from './is';
 
+export const trimPattern = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+export const trim = (str: string): string => str.replace(trimPattern, '');
+
+export const trimLeftPattern = /^[\s\uFEFF\xA0]+/g;
+export const trimLeft = (str: string): string =>
+  str.replace(trimLeftPattern, '');
+
+export const trimRightPattern = /[\s\uFEFF\xA0]+$/g;
+export const trimRight = (str: string): string =>
+  str.replace(trimRightPattern, '');
+
 export const stringify = (
   obj: any,
   spacing = '  ',
