@@ -102,3 +102,14 @@ export const max = (ns: number[]): number | null => {
   }
   return m;
 };
+
+export const roundDownToInterval = (n: number, interval: number): number =>
+  n - (n % interval);
+
+export const roundUpToInterval = (n: number, interval: number): number => {
+  const r = n % interval;
+  if (r > 0) {
+    return n + (interval - r);
+  }
+  return n;
+};
