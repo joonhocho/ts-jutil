@@ -2,6 +2,12 @@
   "name": "ts-jutil",
   "version": "0.0.50",
   "description": "TypeScript library of simple utility functions",
+  "keywords": [
+    "TypeScript",
+    "utility",
+    "util",
+    "library"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -22,18 +28,12 @@
     "test:watch": "jest --watch"
   },
   "pre-commit": "precommit",
+  "author": "Joon Ho Cho",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joonhocho/ts-jutil.git"
   },
-  "keywords": [
-    "TypeScript",
-    "utility",
-    "util",
-    "library"
-  ],
-  "author": "Joon Ho Cho",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joonhocho/ts-jutil/issues"
   },
