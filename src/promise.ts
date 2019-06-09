@@ -3,11 +3,9 @@ import { getKeys } from './object';
 export type PromiseOfNewType<T, U> = T extends Promise<any> ? Promise<U> : U;
 
 export const sleep = (ms: number): Promise<void> =>
-  new Promise(
-    (resolve): void => {
-      setTimeout(resolve, ms);
-    }
-  );
+  new Promise((resolve): void => {
+    setTimeout(resolve, ms);
+  });
 
 export const mapPromise = <V, MV>(
   data: V | Promise<V>,
@@ -77,21 +75,19 @@ export const createBatcher = <A extends any[], R>(
     argsQueue.push(args);
 
     if (!promise) {
-      promise = new Promise(
-        (resolve, reject): void => {
-          setTimeout((): void => {
-            const argsList = argsQueue;
-            argsQueue = [];
-            promise = null;
+      promise = new Promise((resolve, reject): void => {
+        setTimeout((): void => {
+          const argsList = argsQueue;
+          argsQueue = [];
+          promise = null;
 
-            try {
-              batch(argsList).then(resolve, reject);
-            } catch (e) {
-              reject(e);
-            }
-          }, delay);
-        }
-      );
+          try {
+            batch(argsList).then(resolve, reject);
+          } catch (e) {
+            reject(e);
+          }
+        }, delay);
+      });
     }
 
     return promise;
@@ -144,12 +140,10 @@ export class DeferredPromise<T, E = any> {
   protected _fulfilled = false;
 
   constructor(protected timeout?: number) {
-    this._promise = new Promise<T>(
-      (resolve, reject): void => {
-        this._resolve = resolve;
-        this._reject = reject;
-      }
-    );
+    this._promise = new Promise<T>((resolve, reject): void => {
+      this._resolve = resolve;
+      this._reject = reject;
+    });
     if (timeout) {
       this._tid = setTimeout(() => {
         if (this._reject) {

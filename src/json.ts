@@ -87,7 +87,7 @@ export const mapStruct = <
   | { [P in keyof T]?: Exclude<ReturnTypeOrNever<M[P]>, undefined> }
   | undefined => {
   const copy = {} as {
-    [P in keyof T]?: Exclude<ReturnTypeOrNever<M[P]>, undefined>
+    [P in keyof T]?: Exclude<ReturnTypeOrNever<M[P]>, undefined>;
   };
   const keys = getKeys(obj);
   const len = keys.length;
@@ -115,7 +115,7 @@ export const mapStructPartial = <
       value: P extends keyof T ? T[P] : any,
       key: P,
       obj: T
-    ) => any
+    ) => any;
   }
 >(
   obj: T,

@@ -17,7 +17,7 @@ export type Exact<T, X extends T> = T &
   { [K in keyof X]: K extends keyof T ? X[K] : never };
 
 export type KeyOfTypeReverse<T, U> = {
-  [P in keyof T]-?: U extends T[P] ? P : never
+  [P in keyof T]-?: U extends T[P] ? P : never;
 }[keyof T];
 
 export type WithoutUndefined<T> = Pick<
