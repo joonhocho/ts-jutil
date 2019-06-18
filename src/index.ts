@@ -9,6 +9,7 @@ import * as func from './func';
 import * as http from './http';
 import * as is from './is';
 import * as json from './json';
+import * as math from './math';
 import * as number from './number';
 import * as object from './object';
 import * as promise from './promise';
@@ -33,6 +34,7 @@ export {
   http,
   is,
   json,
+  math,
   number,
   object,
   promise,
