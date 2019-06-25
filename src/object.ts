@@ -1,4 +1,11 @@
-import { AnyObject, OverwriteProps, UnionObjects, ValueOf } from 'tsdef';
+import {
+  AnyKey,
+  AnyObject,
+  ExcludeKeys,
+  OverwriteProps,
+  UnionObjects,
+  ValueOf,
+} from 'tsdef';
 import { isDefined, isNotNil } from './is';
 import { WithoutNil, WithoutUndefined } from './type';
 
@@ -560,4 +567,21 @@ export const deepSortedCopy = <T>(obj: T): T => {
   }
 
   return dest;
+};
+
+export const setProp = <T, K extends AnyKey, V>(
+  obj: T,
+  key: K,
+  value: V
+): ExcludeKeys<T, K> & { [P in K]: V } => {
+  (obj as any)[key] = value;
+  return obj as any;
+};
+
+export const deleteProp = <T, K extends AnyKey>(
+  obj: T,
+  key: K
+): ExcludeKeys<T, K> => {
+  delete (obj as any)[key];
+  return obj as any;
 };

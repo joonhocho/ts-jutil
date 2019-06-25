@@ -3,6 +3,7 @@ import {
   assignKeys,
   copy,
   deepSortedCopy,
+  deleteProp,
   enums,
   filter,
   filterKeys,
@@ -21,6 +22,7 @@ import {
   mapKeys,
   mapToArray,
   reduce,
+  setProp,
   setter,
   sortedCopy,
   values,
@@ -656,5 +658,18 @@ describe('object', () => {
       expect(Object.keys(sorted.b[1])).toEqual(['a2', 'b2', 'c2']);
       expect(Object.keys(sorted.c)).toEqual(['a3', 'b3', 'c3']);
     });
+  });
+
+  test('setProp', () => {
+    expect(setProp({}, 'a', 1)).toEqual({ a: 1 });
+    expect(setProp({ a: 1 }, 'b', 2)).toEqual({ a: 1, b: 2 });
+    expect(setProp({ a: 1 }, 'a', 'hi')).toEqual({ a: 'hi' });
+  });
+
+  test('deleteProp', () => {
+    expect(deleteProp({}, 'a')).toEqual({});
+    expect(deleteProp({ a: 1 }, 'a')).toEqual({});
+    expect(deleteProp({ a: 1 }, 'b')).toEqual({ a: 1 });
+    expect(deleteProp({ a: 1, b: 2 }, 'b')).toEqual({ a: 1 });
   });
 });
