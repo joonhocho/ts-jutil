@@ -21,6 +21,7 @@ import * as value from './value';
 import * as youtube from './youtube';
 export * from './AsyncQueue';
 export * from './UpdateRunner';
+export * from './SimpleCache';
 
 export {
   array,

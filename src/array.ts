@@ -131,6 +131,56 @@ export const reduceRight = <T, U>(
   return v;
 };
 
+export const find = <T>(
+  arr: T[],
+  fn: (item: T, index: number, array: T[]) => boolean
+): T | undefined => {
+  const len = arr.length;
+  for (let i = 0; i < len; i += 1) {
+    if (fn(arr[i], i, arr)) {
+      return arr[i];
+    }
+  }
+  return undefined;
+};
+
+export const findLast = <T>(
+  arr: T[],
+  fn: (item: T, index: number, array: T[]) => boolean
+): T | undefined => {
+  for (let i = arr.length - 1; i >= 0; i -= 1) {
+    if (fn(arr[i], i, arr)) {
+      return arr[i];
+    }
+  }
+  return undefined;
+};
+
+export const findIndex = <T>(
+  arr: T[],
+  fn: (item: T, index: number, array: T[]) => boolean
+): number => {
+  const len = arr.length;
+  for (let i = 0; i < len; i += 1) {
+    if (fn(arr[i], i, arr)) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+export const findLastIndex = <T>(
+  arr: T[],
+  fn: (item: T, index: number, array: T[]) => boolean
+): number => {
+  for (let i = arr.length - 1; i >= 0; i -= 1) {
+    if (fn(arr[i], i, arr)) {
+      return i;
+    }
+  }
+  return -1;
+};
+
 export const reduceFunctions = <U>(
   fns: [(value: U) => U],
   initialValue: U

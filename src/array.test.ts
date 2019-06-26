@@ -4,6 +4,10 @@ import {
   diff,
   every,
   filter,
+  find,
+  findIndex,
+  findLast,
+  findLastIndex,
   first,
   forEach,
   forN,
@@ -224,6 +228,42 @@ describe('array', () => {
     }, -1);
     expect(res1).toEqual(res2);
     expect(args1).toEqual(args2);
+  });
+
+  test('find', () => {
+    expect(find([], () => true)).toBe(undefined);
+    expect(find([1], () => true)).toBe(1);
+    expect(find([1, 2], () => true)).toBe(1);
+    expect(find([1, 2], (x) => x > 1)).toBe(2);
+    expect(find([1, 2, 3], (x) => x > 1)).toBe(2);
+    expect(find([1, 2, 3], () => false)).toBe(undefined);
+  });
+
+  test('findLast', () => {
+    expect(findLast([], () => true)).toBe(undefined);
+    expect(findLast([1], () => true)).toBe(1);
+    expect(findLast([1, 2], () => true)).toBe(2);
+    expect(findLast([1, 2], (x) => x > 1)).toBe(2);
+    expect(findLast([1, 2, 3], (x) => x > 1)).toBe(3);
+    expect(findLast([1, 2, 3], () => false)).toBe(undefined);
+  });
+
+  test('findIndex', () => {
+    expect(findIndex([], () => true)).toBe(-1);
+    expect(findIndex([1], () => true)).toBe(0);
+    expect(findIndex([1, 2], () => true)).toBe(0);
+    expect(findIndex([1, 2], (x) => x > 1)).toBe(1);
+    expect(findIndex([1, 2, 3], (x) => x > 1)).toBe(1);
+    expect(findIndex([1, 2, 3], () => false)).toBe(-1);
+  });
+
+  test('findLastIndex', () => {
+    expect(findLastIndex([], () => true)).toBe(-1);
+    expect(findLastIndex([1], () => true)).toBe(0);
+    expect(findLastIndex([1, 2], () => true)).toBe(1);
+    expect(findLastIndex([1, 2], (x) => x > 1)).toBe(1);
+    expect(findLastIndex([1, 2, 3], (x) => x > 1)).toBe(2);
+    expect(findLastIndex([1, 2, 3], () => false)).toBe(-1);
   });
 
   test('reduceFunctions', () => {
