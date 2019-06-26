@@ -86,19 +86,23 @@ export class SimpleCache<Value> {
     }
   }
 
-  public delete(key: string): void {
-    // delete value
-    delete this.store[key];
+  public delete(key: string): boolean {
+    if (this.store.hasOwnProperty(key)) {
+      // delete value
+      delete this.store[key];
 
-    // remove key
-    maybeRemoveFirst(this._keys, key);
+      // remove key
+      maybeRemoveFirst(this._keys, key);
 
-    // clear ttl
-    const tid = this.ttlIds[key];
-    if (tid != null) {
-      delete this.ttlIds[key];
-      clearTimeout(tid);
+      // clear ttl
+      const tid = this.ttlIds[key];
+      if (tid != null) {
+        delete this.ttlIds[key];
+        clearTimeout(tid);
+      }
+      return true;
     }
+    return false;
   }
 
   public clear(): void {

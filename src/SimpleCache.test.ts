@@ -69,7 +69,8 @@ test('SimpleCache', async () => {
   expect(mockFn.mock.calls).toEqual([[3.3, 'c'], [1.1, 'a'], [4, 'd']]);
   mockFn.mockClear();
 
-  cache.delete('c');
+  expect(cache.delete('c')).toBe(true);
+  expect(cache.delete('c')).toBe(false);
 
   expect(cache.size).toBe(2);
   expect(cache.get('c')).toBe(undefined);
