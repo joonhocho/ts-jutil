@@ -1,5 +1,7 @@
 import { SimpleCache } from './SimpleCache';
 
+jest.useFakeTimers();
+
 test('SimpleCache', async () => {
   const cache = new SimpleCache({
     ttl: 10,
@@ -87,6 +89,32 @@ test('SimpleCache', async () => {
   expect(cache.has('a')).toBe(false);
   expect(cache.has('b')).toBe(false);
   expect(cache.has('c')).toBe(false);
+
+  cache.forEach(mockFn);
+  expect(mockFn.mock.calls).toEqual([]);
+  mockFn.mockClear();
+
+  cache.set('a', 1, { ttl: 10 });
+  cache.set('b', 2, { ttl: 30 });
+  cache.set('c', 3, { ttl: 20 });
+
+  cache.forEach(mockFn);
+  expect(mockFn.mock.calls).toEqual([[1, 'a'], [2, 'b'], [3, 'c']]);
+  mockFn.mockClear();
+
+  jest.runTimersToTime(10);
+
+  cache.forEach(mockFn);
+  expect(mockFn.mock.calls).toEqual([[2, 'b'], [3, 'c']]);
+  mockFn.mockClear();
+
+  jest.runTimersToTime(10);
+
+  cache.forEach(mockFn);
+  expect(mockFn.mock.calls).toEqual([[2, 'b']]);
+  mockFn.mockClear();
+
+  jest.runTimersToTime(10);
 
   cache.forEach(mockFn);
   expect(mockFn.mock.calls).toEqual([]);
