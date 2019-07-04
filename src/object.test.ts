@@ -10,6 +10,7 @@ import {
   forEach,
   get,
   getKeys,
+  getProp,
   getter,
   getterMap,
   hasOwnProp,
@@ -21,6 +22,8 @@ import {
   mapFilter,
   mapKeys,
   mapToArray,
+  pick,
+  propGetter,
   reduce,
   setProp,
   setter,
@@ -671,5 +674,27 @@ describe('object', () => {
     expect(deleteProp({ a: 1 }, 'a')).toEqual({});
     expect(deleteProp({ a: 1 }, 'b')).toEqual({ a: 1 });
     expect(deleteProp({ a: 1, b: 2 }, 'b')).toEqual({ a: 1 });
+  });
+
+  test('pick', () => {
+    expect(pick({}, ['a'] as any)).toEqual({});
+    expect(pick({ a: 1 }, ['a'])).toEqual({ a: 1 });
+    expect(pick({ a: 1, b: '' }, ['b'])).toEqual({ b: '' });
+    expect(pick({ a: 1, b: '' }, ['a', 'b'])).toEqual({ a: 1, b: '' });
+    expect(Object.keys(pick({ a: 1, c: true }, ['a', 'b'] as any))).toEqual([
+      'a',
+    ]);
+  });
+
+  test('getProp', () => {
+    expect(getProp({} as any, 'a')).toEqual(undefined);
+    expect(getProp({ a: 1 }, 'a')).toEqual(1);
+    expect(getProp({ a: 1 }, 'b' as any)).toEqual(undefined);
+  });
+
+  test('propGetter', () => {
+    expect(propGetter('a')({} as any)).toEqual(undefined);
+    expect(propGetter('a')({ a: 1 } as any)).toEqual(1);
+    expect(propGetter('a')({ b: 1 } as any)).toEqual(undefined);
   });
 });

@@ -585,3 +585,25 @@ export const deleteProp = <T, K extends AnyKey>(
   delete (obj as any)[key];
   return obj as any;
 };
+
+export const pick = <T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> => {
+  const dest = {} as Pick<T, K>;
+  for (let i = 0, len = keys.length; i < len; i += 1) {
+    const key = keys[i];
+    if (key in obj) {
+      dest[key] = obj[key];
+    }
+  }
+  return dest;
+};
+
+export const getProp = <T, K extends keyof T>(obj: T, key: K): T[K] => obj[key];
+
+export type PropGetter<T, K extends keyof T> = (obj: T) => T[K];
+
+// tslint:disable-next-line typedef
+export const propGetter = <K extends AnyKey>(key: K) => <
+  T extends { [k in K]: any }
+>(
+  obj: T
+): T[K] => obj[key];
