@@ -10,7 +10,6 @@ export * from './findLastIndex';
 export * from './first';
 export * from './forEach';
 export * from './forN';
-export * from './index';
 export * from './indexItems';
 export * from './indexItemsToList';
 export * from './intersection';
