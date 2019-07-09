@@ -1,5 +1,5 @@
 import { AsyncQueue } from './AsyncQueue';
-import { sleep } from './promise';
+import { sleep } from './promise/sleep';
 
 test('AsyncQueue', async () => {
   const q = new AsyncQueue();

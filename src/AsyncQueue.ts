@@ -1,4 +1,4 @@
-import { DeferredPromise } from './promise';
+import { DeferredPromise } from './promise/DeferredPromise';
 
 export type AsyncJob = () => void | Promise<void>;
 

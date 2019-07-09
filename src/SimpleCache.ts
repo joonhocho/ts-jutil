@@ -1,5 +1,5 @@
-import { maybeRemoveFirst } from './array';
-import { forEach } from './object';
+import { maybeRemoveFirst } from './array/maybeRemoveFirst';
+import { forEach } from './object/forEach';
 
 export interface ISimpleCacheOptions<Value> {
   ttl?: number;

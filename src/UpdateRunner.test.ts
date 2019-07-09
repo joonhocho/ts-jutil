@@ -1,4 +1,4 @@
-import { sleep } from './promise';
+import { sleep } from './promise/sleep';
 import { UpdateRunner } from './UpdateRunner';
 
 test('UpdateRunner', async () => {

@@ -30,3 +30,9 @@ export const isNotString = (x: any): boolean => typeof x !== 'string';
 export const isFunction = (x: any): x is Function => typeof x === 'function';
 
 export const isNotFunction = (x: any): boolean => typeof x !== 'function';
+
+export const isObject = (o: any): boolean =>
+  o !== null && typeof o === 'object';
+
+export const isPlainObject = (o: any): boolean =>
+  isObject(o) && (o.constructor === Object || o.constructor == null);

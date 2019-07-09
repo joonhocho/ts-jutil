@@ -12,6 +12,8 @@ import {
   isNotString,
   isNull,
   isNumber,
+  isObject,
+  isPlainObject,
   isString,
   isTruthy,
   isUndefined,
@@ -335,4 +337,38 @@ test('isNotFunction', () => {
   expect(isNotFunction(undefined)).toBe(true);
   expect(isNotFunction({ a: 1 })).toBe(true);
   expect(isNotFunction({})).toBe(true);
+});
+
+test('isObject', () => {
+  expect(isObject(undefined)).toBe(false);
+  expect(isObject(null)).toBe(false);
+  expect(isObject('')).toBe(false);
+  expect(isObject(0)).toBe(false);
+  expect(isObject(1)).toBe(false);
+  expect(isObject(true)).toBe(false);
+  expect(isObject(false)).toBe(false);
+  expect(isObject([])).toBe(true);
+  expect(isObject(new Date())).toBe(true);
+  expect(isObject({})).toBe(true);
+  expect(isObject({ a: 1 })).toBe(true);
+  expect(isObject(Object.create(null))).toBe(true);
+  expect(isObject(Object.create({}))).toBe(true);
+  expect(isObject(new Object())).toBe(true);
+});
+
+test('isPlainObject', () => {
+  expect(isPlainObject(undefined)).toBe(false);
+  expect(isPlainObject(null)).toBe(false);
+  expect(isPlainObject('')).toBe(false);
+  expect(isPlainObject(0)).toBe(false);
+  expect(isPlainObject(1)).toBe(false);
+  expect(isPlainObject(true)).toBe(false);
+  expect(isPlainObject(false)).toBe(false);
+  expect(isPlainObject([])).toBe(false);
+  expect(isPlainObject(new Date())).toBe(false);
+  expect(isPlainObject({})).toBe(true);
+  expect(isPlainObject({ a: 1 })).toBe(true);
+  expect(isPlainObject(Object.create(null))).toBe(true);
+  expect(isPlainObject(Object.create({}))).toBe(true);
+  expect(isPlainObject(new Object())).toBe(true);
 });
