@@ -1,6 +1,6 @@
 export { Unpromise, allValues, promiseAll } from './allValues';
 export { createBatcher } from './createBatcher';
-export { TimeoutError, DeferredPromise } from './DeferredPromise';
+export { DeferredPromise, TimeoutError } from './DeferredPromise';
 export { mapPromise } from './mapPromise';
 export { sleep } from './sleep';
 export { IDataResult, IErrorResult, IResult, toResult } from './toResult';

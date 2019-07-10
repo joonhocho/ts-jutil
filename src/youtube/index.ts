@@ -5,6 +5,6 @@ export {
   YouTubeVideoThumbnailSize,
   getVideoThumbnailUrl,
   getYouTubeChannelUrl,
-  getYouTubeVideoUrl,
   getYouTubeVideoEmbedUrl,
+  getYouTubeVideoUrl,
 } from './url';

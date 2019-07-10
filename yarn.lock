@@ -507,10 +507,15 @@
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@^12.6.1":
+"@types/node@*":
   version "12.6.1"
   resolved "https://registry.npmjs.org/@types/node/-/node-12.6.1.tgz#d5544f6de0aae03eefbb63d5120f6c8be0691946"
   integrity sha512-rp7La3m845mSESCgsJePNL/JQyhkOJA6G4vcwvVgkDAwHhGdq5GCumxmPjEk1MZf+8p5ZQAUE7tqgQRQTXN7uQ==
+
+"@types/node@^12.6.2":
+  version "12.6.2"
+  resolved "https://registry.npmjs.org/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
+  integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -4158,10 +4163,10 @@ tslint@^5.18.0:
     tslib "^1.8.0"
     tsutils "^2.29.0"
 
-tstf@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/tstf/-/tstf-0.0.6.tgz#75c9f82b0ded827d140943ad0edf04579ab3f875"
-  integrity sha512-6SACMIGYp5jxGuRFJMHcAjbBUFsQ3ep80JEKJGQDuw6tQedYRUcWsGWuGgWAMewT9+zSUpt9HV2Dm31fjTKUJw==
+tstf@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/tstf/-/tstf-0.0.11.tgz#3785ca773a64f0b6f8184fe55a45ec5eb7d1732b"
+  integrity sha512-WbgoZvlxWAT46Qs4uTvZYbiPoHZqHVVty1iUwB8CYC7fX48YbOnwzb7ZhXqyBevHtEZGCVtHt2vnT8olynqdfg==
   dependencies:
     "@oclif/command" "^1.5.16"
     "@oclif/config" "^1.13.1"

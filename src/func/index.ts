@@ -3,10 +3,10 @@ export { memoize } from './memoize';
 export { memoizeArg } from './memoizeArg';
 export { memoizeCompose } from './memoizeCompose';
 export {
+  bypass,
   noop,
-  returnVoid,
+  returnFalse,
   returnNull,
   returnTrue,
-  returnFalse,
-  bypass,
+  returnVoid,
 } from './return';
