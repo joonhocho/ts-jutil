@@ -1,1 +1,1 @@
-export * from './getAuthorizationBearerToken';
+export { getAuthorizationBearerToken } from './getAuthorizationBearerToken';

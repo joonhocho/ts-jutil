@@ -1,2 +1,10 @@
-export * from './parseVideoIdFromYouTubeVideoUrl';
-export * from './url';
+export {
+  parseVideoIdFromYouTubeVideoUrl,
+} from './parseVideoIdFromYouTubeVideoUrl';
+export {
+  YouTubeVideoThumbnailSize,
+  getVideoThumbnailUrl,
+  getYouTubeChannelUrl,
+  getYouTubeVideoUrl,
+  getYouTubeVideoEmbedUrl,
+} from './url';

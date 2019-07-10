@@ -1,3 +1,3 @@
-export * from './getTime';
-export * from './parseYYYYMMDD';
-export * from './shortFromNow';
+export { getTime } from './getTime';
+export { parseYYYYMMDD } from './parseYYYYMMDD';
+export { shortFromNow } from './shortFromNow';

@@ -1,5 +1,5 @@
-export * from './inheritClass';
-export * from './inheritProp';
-export * from './inheritProps';
-export * from './inheritPrototype';
-export * from './inheritStatic';
+export { inheritClass } from './inheritClass';
+export { inheritProp } from './inheritProp';
+export { inheritProps } from './inheritProps';
+export { inheritPrototype } from './inheritPrototype';
+export { inheritStatic } from './inheritStatic';

@@ -1,1 +1,1 @@
-export * from './isMetaKeySet';
+export { isMetaKeySet } from './isMetaKeySet';

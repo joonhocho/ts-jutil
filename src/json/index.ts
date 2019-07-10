@@ -1,6 +1,6 @@
-export * from './cloneDeep';
-export * from './deepMapArrayWithoutEmpty';
-export * from './deepMapObjectWithoutEmpty';
-export * from './mapStruct';
-export * from './mapStructPartial';
-export * from './ts';
+export { cloneDeep } from './cloneDeep';
+export { deepMapArrayWithoutEmpty } from './deepMapArrayWithoutEmpty';
+export { deepMapObjectWithoutEmpty } from './deepMapObjectWithoutEmpty';
+export { mapStruct } from './mapStruct';
+export { mapStructPartial } from './mapStructPartial';
+export { MapFN } from './ts';

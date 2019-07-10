@@ -6,7 +6,9 @@
     "declarationDir": "lib",
     "declarationMap": true,
     "emitDecoratorMetadata": true,
+    "importHelpers": true,
     "noEmit": false,
+    "noEmitHelpers": true,
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true
