@@ -16,6 +16,8 @@ export { padStart } from './padStart';
 export { parseFileUrl } from './parseFileUrl';
 export { repeatString } from './repeatString';
 export { split } from './split';
+export { splitIntoTwo } from './splitIntoTwo';
+export { splitIntoTwoFromLast } from './splitIntoTwoFromLast';
 export { stringify } from './stringify';
 export { toBase64 } from './toBase64';
 export { toDigits } from './toDigits';
