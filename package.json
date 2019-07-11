@@ -58,10 +58,10 @@
     "tstf": "^0.0.11",
     "typescript": "^3.5.3"
   },
-  "engines": {
-    "node": ">=8.0.0"
-  },
   "peerDependencies": {
     "tslib": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }
