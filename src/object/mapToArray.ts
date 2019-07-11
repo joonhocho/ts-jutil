@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 import { getKeys } from './getKeys';
 
 export const mapToArray = <T extends AnyObject, U>(

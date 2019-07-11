@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 
 export const getter = <TData = any>(
   path: string

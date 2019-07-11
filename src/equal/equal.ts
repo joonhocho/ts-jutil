@@ -1,4 +1,4 @@
-import { isObject } from 'src/is';
+import { isObject } from '_src/is';
 import { equalObjects } from './equalObjects';
 import { IEqualOptions } from './ts';
 

@@ -1,4 +1,4 @@
-import { PropKey } from 'src/ts';
+import { PropKey } from '_src/ts';
 import { OverwriteProps } from 'tsdef';
 
 export const inheritProp = <T, F, K extends keyof F, TK extends PropKey>(

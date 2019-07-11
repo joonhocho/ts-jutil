@@ -1,5 +1,5 @@
-import { getKeys } from 'src/object/getKeys';
-import { AnyObject, Exact, ReturnTypeOrNever } from 'src/ts';
+import { getKeys } from '_src/object/getKeys';
+import { AnyObject, Exact, ReturnTypeOrNever } from '_src/ts';
 
 export const mapStruct = <
   T extends AnyObject,

@@ -1,4 +1,4 @@
-import { toKeyFn } from 'src/ts';
+import { toKeyFn } from '_src/ts';
 
 export const uniqueWithIndexes = <T>(
   list: T[],

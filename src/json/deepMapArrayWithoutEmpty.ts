@@ -1,4 +1,4 @@
-import { isObject } from 'src/is';
+import { isObject } from '_src/is';
 import { deepMapObjectWithoutEmpty } from './deepMapObjectWithoutEmpty';
 import { MapFN } from './ts';
 

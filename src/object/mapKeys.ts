@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 import { UnionObjects, ValueOf } from 'tsdef';
 import { getKeys } from './getKeys';
 import { hasOwnProperty } from './hasOwnProp';

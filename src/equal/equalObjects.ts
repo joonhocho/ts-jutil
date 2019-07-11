@@ -1,6 +1,6 @@
-import { getKeys } from 'src/object/getKeys';
-import { hasOwnProp } from 'src/object/hasOwnProp';
-import { AnyObject } from 'src/ts';
+import { getKeys } from '_src/object/getKeys';
+import { hasOwnProp } from '_src/object/hasOwnProp';
+import { AnyObject } from '_src/ts';
 import { equal } from './equal';
 import { IEqualOptions } from './ts';
 

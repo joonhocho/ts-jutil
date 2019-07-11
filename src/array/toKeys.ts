@@ -1,4 +1,4 @@
-import { AnyObject, toKeyFn } from 'src/ts';
+import { AnyObject, toKeyFn } from '_src/ts';
 
 export const toKeys = <T, U>(
   list: T[],

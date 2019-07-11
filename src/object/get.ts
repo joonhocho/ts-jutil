@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 
 export const get = <TData = any>(
   obj: AnyObject | null,

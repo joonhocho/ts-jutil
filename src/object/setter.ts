@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 
 // tslint:disable-next-line typedef
 export const setter = (

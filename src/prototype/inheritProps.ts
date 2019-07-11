@@ -1,4 +1,4 @@
-import { hasOwnProp } from 'src/object/hasOwnProp';
+import { hasOwnProp } from '_src/object/hasOwnProp';
 import { OverwriteProps } from 'tsdef';
 import { inheritProp } from './inheritProp';
 

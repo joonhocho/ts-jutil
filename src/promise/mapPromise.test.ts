@@ -1,4 +1,4 @@
-import { last } from 'src/array/last';
+import { last } from '_src/array/last';
 import { mapPromise } from './mapPromise';
 
 // tslint:disable-next-line typedef

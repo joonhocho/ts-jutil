@@ -1,4 +1,4 @@
-import { bypass } from 'src/func/return';
+import { bypass } from '_src/func/return';
 
 export const withoutFalsy = <T>(
   arr: T[]

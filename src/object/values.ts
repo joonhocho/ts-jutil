@@ -1,4 +1,4 @@
-import { AnyObject } from 'src/ts';
+import { AnyObject } from '_src/ts';
 import { getKeys } from './getKeys';
 
 export const values = <T extends AnyObject>(obj: T): Array<T[keyof T]> => {

@@ -1,5 +1,5 @@
-import { getKeys } from 'src/object/getKeys';
-import { AnyObject } from 'src/ts';
+import { getKeys } from '_src/object/getKeys';
+import { AnyObject } from '_src/ts';
 
 export const mapStructPartial = <
   T extends AnyObject,

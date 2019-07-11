@@ -1,4 +1,4 @@
-import { toKeyFn } from 'src/ts';
+import { toKeyFn } from '_src/ts';
 
 export const unique = <T>(list: T[], toKey?: toKeyFn<T> | keyof T): T[] => {
   if (!list.length) {

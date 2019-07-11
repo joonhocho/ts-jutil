@@ -1,4 +1,4 @@
-import { toKeyFn } from 'src/ts';
+import { toKeyFn } from '_src/ts';
 import { countByIndex } from './countByIndex';
 
 export const intersection = <T>(

@@ -1,6 +1,6 @@
-import { isObject } from 'src/is';
-import { getKeys } from 'src/object/getKeys';
-import { AnyObject } from 'src/ts';
+import { isObject } from '_src/is';
+import { getKeys } from '_src/object/getKeys';
+import { AnyObject } from '_src/ts';
 import { deepMapArrayWithoutEmpty } from './deepMapArrayWithoutEmpty';
 import { MapFN } from './ts';
 

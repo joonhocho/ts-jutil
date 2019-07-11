@@ -1,5 +1,5 @@
-import { isDefined } from 'src/is';
-import { WithoutUndefined } from 'src/ts';
+import { isDefined } from '_src/is';
+import { WithoutUndefined } from '_src/ts';
 import { AnyObject } from 'tsdef';
 import { filter } from './filter';
 

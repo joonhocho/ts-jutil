@@ -1,4 +1,4 @@
-import { isTruthy } from 'src/is';
+import { isTruthy } from '_src/is';
 
 export const split = (list: string | string[], delimiter = ','): string[] => {
   if (!list || !list.length) return [];
