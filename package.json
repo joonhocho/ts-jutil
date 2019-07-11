@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TypeScript library of simple utility functions",
   "keywords": [
     "TypeScript",
@@ -8,10 +8,24 @@
     "util",
     "library"
   ],
+
+  "author": "Joon Ho Cho",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joonhocho/ts-jutil.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joonhocho/ts-jutil/issues"
+  },
+  "homepage": "https://github.com/joonhocho/ts-jutil#readme",
+
+  "sideEffects": false,
   "module": "lib/index.js",
   "main": "dist/node/index.js",
   "browser": "dist/browser/index.js",
   "types": "lib/index.d.ts",
+
   "scripts": {
     "all": "npm run clean && npm run format && npm run lint:fix && npm run build:all && npm run test",
     "build:all": "npm run build:module && npm run build:node && npm run build:browser",
@@ -32,16 +46,10 @@
     "test:watch": "jest --watch"
   },
   "pre-commit": "precommit",
-  "author": "Joon Ho Cho",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/joonhocho/ts-jutil.git"
+
+  "peerDependencies": {
+    "tslib": "^1.10.0"
   },
-  "bugs": {
-    "url": "https://github.com/joonhocho/ts-jutil/issues"
-  },
-  "homepage": "https://github.com/joonhocho/ts-jutil#readme",
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.2",
@@ -57,11 +65,8 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   },
-  "peerDependencies": {
-    "tslib": "^1.10.0"
-  },
+
   "engines": {
     "node": ">=8.0.0"
-  },
-  "sideEffects": false
+  }
 }
