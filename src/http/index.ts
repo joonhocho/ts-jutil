@@ -1,1 +1,0 @@
-export { getAuthorizationBearerToken } from './getAuthorizationBearerToken';
