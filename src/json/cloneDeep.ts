@@ -1,14 +1,14 @@
-import { map } from '_src/array/map';
+import { mapItems } from '_src/array/mapItems';
 import { isObject } from '_src/is';
-import { map as mapObj } from '_src/object/map';
+import { mapProps } from '_src/object/mapProps';
 
 export const cloneDeep = <T>(obj: T): T => {
   if (isObject(obj)) {
     if (Array.isArray(obj)) {
-      return map(obj, cloneDeep) as any;
+      return mapItems(obj, cloneDeep) as any;
     }
 
-    return mapObj(obj, cloneDeep) as any;
+    return mapProps(obj, cloneDeep) as any;
   }
   return obj;
 };

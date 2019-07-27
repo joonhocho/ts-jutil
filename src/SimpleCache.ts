@@ -1,5 +1,5 @@
 import { maybeRemoveFirst } from './array/maybeRemoveFirst';
-import { forEach } from './object/forEach';
+import { forEachProp } from './object/forEachProp';
 
 export interface ISimpleCacheOptions<Value> {
   ttl?: number;
@@ -108,7 +108,7 @@ export class SimpleCache<Value> {
   public clear(): void {
     this.store = {};
     this._keys = [];
-    forEach(this.ttlIds, (id) => clearTimeout(id));
+    forEachProp(this.ttlIds, (id) => clearTimeout(id));
     this.ttlIds = {};
   }
 

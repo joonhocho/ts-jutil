@@ -34,16 +34,6 @@ export {
 } from './ts';
 export { UpdateJob, UpdateRunner } from './UpdateRunner';
 export { Value, ValueListener } from './Value';
-export {
-  parseVideoIdFromYouTubeVideoUrl,
-} from './youtube/parseVideoIdFromYouTubeVideoUrl';
-export {
-  YouTubeVideoThumbnailSize,
-  getVideoThumbnailUrl,
-  getYouTubeChannelUrl,
-  getYouTubeVideoEmbedUrl,
-  getYouTubeVideoUrl,
-} from './youtube/url';
 export { base64FromUrlSafe } from './string/base64FromUrlSafe';
 export { base64ToUrlSafe } from './string/base64ToUrlSafe';
 export { capitalizeFirst } from './string/capitalizeFirst';
@@ -75,46 +65,16 @@ export { trimLeft, trimLeftPattern } from './string/trimLeft';
 export { trimRight, trimRightPattern } from './string/trimRight';
 export { truncate } from './string/truncate';
 export { unescapeHtmlChars } from './string/unescapeHtmlChars';
-export { assignDefined } from './object/assignDefined';
-export { assignKeys } from './object/assignKeys';
-export { copy } from './object/copy';
-export { deepSortedCopy } from './object/deepSortedCopy';
-export { defineLazyProp } from './object/defineLazyProp';
-export { defineMethod } from './object/defineMethod';
-export { defineProp } from './object/defineProp';
-export { deleteProp } from './object/deleteProp';
-export { enums } from './object/enums';
-export { every as objectEvery } from './object/every';
-export { filter as objectFilter } from './object/filter';
-export { filterKeys } from './object/filterKeys';
-export { find as objectFind } from './object/find';
-export { findKey } from './object/findKey';
-export { forEach as objectForEach } from './object/forEach';
-export { get } from './object/get';
-export { getKeys, keys } from './object/getKeys';
-export { getProp } from './object/getProp';
-export { getter } from './object/getter';
-export { getterMap } from './object/getterMap';
-export { hasOwnProp, hasOwnProperty } from './object/hasOwnProp';
-export { immutableSetter } from './object/immutableSetter';
-export { isEmpty } from './object/isEmpty';
-export { map as objectMap } from './object/map';
-export { mapFilter as objectMapFilter } from './object/mapFilter';
-export { mapKeys } from './object/mapKeys';
-export { mapToArray } from './object/mapToArray';
-export { pick } from './object/pick';
-export { PropGetter, propGetter } from './object/propGetter';
-export { reduce as objectReduce } from './object/reduce';
-export { setProp } from './object/setProp';
-export { setter } from './object/setter';
-export { some as objectSome } from './object/some';
-export { sortedCopy } from './object/sortedCopy';
-export { values } from './object/values';
-export { withoutKeys } from './object/withoutKeys';
-export { withoutNil as objectWithoutNil } from './object/withoutNil';
 export {
-  withoutUndefined as objectWithoutUndefined,
-} from './object/withoutUndefined';
+  parseVideoIdFromYouTubeVideoUrl,
+} from './youtube/parseVideoIdFromYouTubeVideoUrl';
+export {
+  YouTubeVideoThumbnailSize,
+  getVideoThumbnailUrl,
+  getYouTubeChannelUrl,
+  getYouTubeVideoEmbedUrl,
+  getYouTubeVideoUrl,
+} from './youtube/url';
 export { Unpromise, allValues, promiseAll } from './promise/allValues';
 export { createBatcher } from './promise/createBatcher';
 export { DeferredPromise, TimeoutError } from './promise/DeferredPromise';
@@ -128,11 +88,58 @@ export {
 } from './promise/toResult';
 export { PromiseOfNewType } from './promise/ts';
 export { waitAll } from './promise/waitAll';
+export { assignDefined } from './object/assignDefined';
+export { assignKeys } from './object/assignKeys';
+export { copy } from './object/copy';
+export { deepSortedCopy } from './object/deepSortedCopy';
+export { defineLazyProp } from './object/defineLazyProp';
+export { defineMethod } from './object/defineMethod';
+export { defineProp } from './object/defineProp';
+export { deleteNilProps } from './object/deleteNilProps';
+export { deleteProp } from './object/deleteProp';
+export { deleteUndefinedProps } from './object/deleteUndefinedProps';
+export { enums } from './object/enums';
+export { everyProp } from './object/everyProp';
+export { filterKeys } from './object/filterKeys';
+export { filterProps } from './object/filterProps';
+export { findKey } from './object/findKey';
+export { findProp } from './object/findProp';
+export { forEachProp } from './object/forEachProp';
+export { get } from './object/get';
+export { getKeys, keys } from './object/getKeys';
+export { getProp } from './object/getProp';
+export { getter } from './object/getter';
+export { getterMap } from './object/getterMap';
+export { hasOwnProp, hasOwnProperty } from './object/hasOwnProp';
+export { immutableSetter } from './object/immutableSetter';
+export { isEmpty } from './object/isEmpty';
+export { mapFilterProps } from './object/mapFilterProps';
+export { mapKeys } from './object/mapKeys';
+export { mapProps } from './object/mapProps';
+export { mapToArray } from './object/mapToArray';
+export { omit } from './object/omit';
+export { pick } from './object/pick';
+export { PropGetter, propGetter } from './object/propGetter';
+export { reduceProps } from './object/reduceProps';
+export { setProp } from './object/setProp';
+export { setter } from './object/setter';
+export { someProp } from './object/someProp';
+export { sortedCopy } from './object/sortedCopy';
+export { values } from './object/values';
+export { withoutKeys } from './object/withoutKeys';
+export { withoutNilProps } from './object/withoutNilProps';
+export { withoutUndefinedProps } from './object/withoutUndefinedProps';
 export { inheritClass } from './prototype/inheritClass';
 export { inheritProp } from './prototype/inheritProp';
 export { inheritProps } from './prototype/inheritProps';
 export { inheritPrototype } from './prototype/inheritPrototype';
 export { inheritStatic } from './prototype/inheritStatic';
+export { cloneDeep } from './json/cloneDeep';
+export { deepMapArrayWithoutEmpty } from './json/deepMapArrayWithoutEmpty';
+export { deepMapObjectWithoutEmpty } from './json/deepMapObjectWithoutEmpty';
+export { mapStruct } from './json/mapStruct';
+export { mapStructPartial } from './json/mapStructPartial';
+export { MapFN } from './json/ts';
 export { average } from './number/average';
 export { formatShortNumber } from './number/formatShortNumber';
 export { intRange } from './number/intRange';
@@ -143,34 +150,28 @@ export { parseFloatInRange } from './number/parseFloatInRange';
 export { parseIntInRange } from './number/parseIntInRange';
 export { roundDownToInterval } from './number/roundDownToInterval';
 export { roundUpToInterval } from './number/roundUpToInterval';
-export { cloneDeep } from './json/cloneDeep';
-export { deepMapArrayWithoutEmpty } from './json/deepMapArrayWithoutEmpty';
-export { deepMapObjectWithoutEmpty } from './json/deepMapObjectWithoutEmpty';
-export { mapStruct } from './json/mapStruct';
-export { mapStructPartial } from './json/mapStructPartial';
-export { MapFN } from './json/ts';
 export {
   getAuthorizationBearerToken,
 } from './http/getAuthorizationBearerToken';
 export { concatArrays } from './array/concatArrays';
 export { countByIndex } from './array/countByIndex';
 export { diff } from './array/diff';
-export { every as arrayEvery } from './array/every';
-export { filter as arrayFilter } from './array/filter';
-export { find as arrayFind } from './array/find';
+export { everyItem } from './array/everyItem';
+export { filterItems } from './array/filterItems';
 export { findIndex } from './array/findIndex';
+export { findItem } from './array/findItem';
 export { findLast } from './array/findLast';
 export { findLastIndex } from './array/findLastIndex';
 export { first } from './array/first';
-export { forEach as arrayForEach } from './array/forEach';
+export { forEachItem } from './array/forEachItem';
 export { forN } from './array/forN';
 export { indexItems } from './array/indexItems';
 export { indexItemsToList } from './array/indexItemsToList';
 export { intersection } from './array/intersection';
 export { join } from './array/join';
 export { last } from './array/last';
-export { map as arrayMap } from './array/map';
-export { mapFilter as arrayMapFilter } from './array/mapFilter';
+export { mapFilterItems } from './array/mapFilterItems';
+export { mapItems } from './array/mapItems';
 export { mapN } from './array/mapN';
 export { mapToUniqueString } from './array/mapToUniqueString';
 export { maybeAdd } from './array/maybeAdd';
@@ -181,12 +182,12 @@ export { prependToNewSet } from './array/prependToNewSet';
 export { prependToSet } from './array/prependToSet';
 export { pushToNewSet } from './array/pushToNewSet';
 export { pushToSet } from './array/pushToSet';
-export { reduce as arrayReduce } from './array/reduce';
 export { reduceFunctions } from './array/reduceFunctions';
+export { reduceItems } from './array/reduceItems';
 export { reduceRight } from './array/reduceRight';
 export { reduceRightFunctions } from './array/reduceRightFunctions';
 export { shallowEqual } from './array/shallowEqual';
-export { some as arraySome } from './array/some';
+export { someItem } from './array/someItem';
 export { toggle } from './array/toggle';
 export { toKeys } from './array/toKeys';
 export { union } from './array/union';
@@ -196,10 +197,8 @@ export { uniqueItems } from './array/uniqueItems';
 export { uniqueWithIndexes } from './array/uniqueWithIndexes';
 export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
-export { withoutNil as arrayWithoutNil } from './array/withoutNil';
-export {
-  withoutUndefined as arrayWithoutUndefined,
-} from './array/withoutUndefined';
+export { withoutNilItems } from './array/withoutNilItems';
+export { withoutUndefinedItems } from './array/withoutUndefinedItems';
 export { lazyGet } from './func/lazyGet';
 export { memoize } from './func/memoize';
 export { memoizeArg } from './func/memoizeArg';
