@@ -50,4 +50,27 @@ test('createWildcardStringMatcher', () => {
   run('/a/b/c/**', '/a/b/c/', true);
   run('/a/b/c/**', '/a/b/c', true);
   run('/a/b/c/**', 'a/b/c', false);
+
+  run('/a/a/*/a/a', '/a/a/a/a', false);
+  run('/a/a/*/a/a', '/a/a/a/a/a', true);
+  run('/a/a/*/a/a', '/a/a/a/a/a/a', false);
+
+  run('/a/a/**/a/a', '/a/a/a', false);
+  run('/a/a/**/a/a', '/a/a/a/a', true);
+  run('/a/a/**/a/a', '/a/a/a/a/a', true);
+  run('/a/a/**/a/a', '/a/a/a/a/a/a', true);
+
+  run('/a/a/*?/a/a', '/a/a/a', false);
+  run('/a/a/*?/a/a', '/a/a/a/a', true);
+  run('/a/a/*?/a/a', '/a/a/a/a/a', true);
+  run('/a/a/*?/a/a', '/a/a/a/a/a/a', false);
+
+  run('/a/a/*+/a/a', '/a/a/a', false);
+  run('/a/a/*+/a/a', '/a/a/a/a', false);
+  run('/a/a/*+/a/a', '/a/a/a/a/a', true);
+  run('/a/a/*+/a/a', '/a/a/a/a/a/a', true);
+
+  expect(() => createWildcardStringMatcher('/a/**/a/**/a')).toThrowError(
+    'once'
+  );
 });

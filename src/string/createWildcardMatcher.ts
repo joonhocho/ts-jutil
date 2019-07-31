@@ -4,7 +4,7 @@
 // * matches exactly part
 // ** and *+ can appear only once
 
-const tooManyTooWild = '*?, **, *! can appear only once';
+const tooManyTooWild = '*?, **, *+ can appear only once';
 
 const wild = '*';
 const wild01 = '*?';
@@ -93,6 +93,9 @@ export const createWildcardStringMatcher = (
   pattern: string,
   separator = '/'
 ): ((match: string) => boolean) => {
+  if (pattern.indexOf('*') === -1) {
+    return (match: string): boolean => match === pattern;
+  }
   const matcher = createWildcardMatcher(pattern.split(separator));
   return (match: string): boolean => matcher(match.split(separator));
 };
