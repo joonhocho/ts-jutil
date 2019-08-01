@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "TypeScript library of simple utility functions",
   "keywords": [
     "TypeScript",
@@ -34,7 +34,7 @@
     "lint": "tslint -c ./tslint.json \"src/**/*.ts\"",
     "lint:fix": "tslint --fix -c ./tslint.json \"src/**/*.ts\"",
     "precommit": "npm run all",
-    "prepublish": "npm run all",
+    "prepublishOnly": "npm run all",
     "reinstall": "rm -rf ./node_modules ./package-lock.json ./yarn.lock && yarn",
     "start": "npm run test",
     "test": "jest",
