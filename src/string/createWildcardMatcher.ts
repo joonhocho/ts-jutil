@@ -1,3 +1,5 @@
+import { returnTrue } from '_src/func/return';
+
 // /a/**/b/*/c
 // ** matches 0 or more parts
 // *+ matches 1 or more parts
@@ -93,6 +95,9 @@ export const createWildcardStringMatcher = (
   pattern: string,
   separator = '/'
 ): ((match: string) => boolean) => {
+  if (pattern === '**') {
+    return returnTrue;
+  }
   if (pattern.indexOf('*') === -1) {
     return (match: string): boolean => match === pattern;
   }
