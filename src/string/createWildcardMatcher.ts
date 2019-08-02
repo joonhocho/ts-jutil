@@ -9,6 +9,7 @@ import { returnTrue } from '_src/func/return';
 const tooManyTooWild = '*?, **, *+ can appear only once';
 
 const wild = '*';
+
 const wild01 = '*?';
 const wild0p = '**';
 const wild1p = '*+';
@@ -69,8 +70,15 @@ export const createWildcardMatcher = (
     if (length >= minLength && length <= maxLength) {
       for (let i = 0, len = beforeTooWild.length; i < len; i += 1) {
         const item = beforeTooWild[i];
-        if (item !== wild && item !== match[i]) {
-          return false;
+        const mItem = match[i];
+        if (item !== mItem) {
+          if (item === wild) {
+            if (mItem === wild01 || mItem === wild0p || mItem === wild1p) {
+              return false;
+            }
+          } else {
+            return false;
+          }
         }
       }
 
@@ -95,10 +103,10 @@ export const createWildcardStringMatcher = (
   pattern: string,
   separator = '/'
 ): ((match: string) => boolean) => {
-  if (pattern === '**') {
+  if (pattern === wild0p) {
     return returnTrue;
   }
-  if (pattern.indexOf('*') === -1) {
+  if (pattern.indexOf(wild) === -1) {
     return (match: string): boolean => match === pattern;
   }
   const matcher = createWildcardMatcher(pattern.split(separator));

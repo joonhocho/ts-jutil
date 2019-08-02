@@ -1,24 +1,24 @@
 import {
-  createWildcardMatcher,
   createWildcardStringMatcher,
-} from './createWildcardMatcher';
+  WildcardPathMatcher,
+} from './WildcardPathMatcher';
 
-test('createWildcardMatcher', () => {
-  const matcher = createWildcardMatcher(['a', '**', 'b', '*', 'c']);
-  expect(matcher(['a', 'b', 'xx', 'c'])).toBe(true);
-  expect(matcher(['a', 'b', 'c'])).toBe(false);
-  expect(matcher(['a', 'xx', 'b', 'xx', 'c'])).toBe(true);
-  expect(matcher(['a', 'xx', 'xx', 'b', 'c', 'c'])).toBe(true);
-  expect(matcher(['a', 'xx', 'xx', 'b', 'xx', 'c'])).toBe(true);
-  expect(matcher(['xx', 'xx', 'b', 'xx', 'c'])).toBe(false);
-  expect(matcher(['a', 'xx', 'c'])).toBe(false);
-  expect(matcher(['a', 'b', 'c'])).toBe(false);
-  expect(matcher(['a', 'b', 'xx', 'c'])).toBe(true);
-  expect(matcher(['a', 'b', 'xx', 'xx', 'c'])).toBe(false);
-  expect(matcher(['a', 'b', 'xx', 'c', 'd'])).toBe(false);
-  expect(matcher(['a', 'b', 'c', 'c'])).toBe(true);
-  expect(matcher(['a', 'b', 'b', 'c'])).toBe(true);
-  expect(matcher(['a', 'b', 'b', 'b', 'b', 'c'])).toBe(true);
+test('WildcardPathMatcher', () => {
+  const matcher = new WildcardPathMatcher(['a', '**', 'b', '*', 'c']);
+  expect(matcher.match(['a', 'b', 'xx', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'b', 'c'])).toBe(false);
+  expect(matcher.match(['a', 'xx', 'b', 'xx', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'xx', 'xx', 'b', 'c', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'xx', 'xx', 'b', 'xx', 'c'])).toBe(true);
+  expect(matcher.match(['xx', 'xx', 'b', 'xx', 'c'])).toBe(false);
+  expect(matcher.match(['a', 'xx', 'c'])).toBe(false);
+  expect(matcher.match(['a', 'b', 'c'])).toBe(false);
+  expect(matcher.match(['a', 'b', 'xx', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'b', 'xx', 'xx', 'c'])).toBe(false);
+  expect(matcher.match(['a', 'b', 'xx', 'c', 'd'])).toBe(false);
+  expect(matcher.match(['a', 'b', 'c', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'b', 'b', 'c'])).toBe(true);
+  expect(matcher.match(['a', 'b', 'b', 'b', 'b', 'c'])).toBe(true);
 });
 
 test('createWildcardStringMatcher', () => {
