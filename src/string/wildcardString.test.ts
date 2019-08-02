@@ -1,6 +1,6 @@
 import { getWildcardStringMatcher } from './wildcardString';
 
-test.only('getWildcardStringMatcher', () => {
+test('getWildcardStringMatcher', () => {
   const run = (pattern: string, match: string, result: boolean): any =>
     expect(getWildcardStringMatcher(pattern)(match)).toBe(result);
 

@@ -1,5 +1,5 @@
 import {
-  createWildcardStringMatcher,
+  getWildcardStringPathMatcher,
   WildcardPathMatcher,
 } from './WildcardPathMatcher';
 
@@ -21,9 +21,9 @@ test('WildcardPathMatcher', () => {
   expect(matcher.match(['a', 'b', 'b', 'b', 'b', 'c'])).toBe(true);
 });
 
-test('createWildcardStringMatcher', () => {
+test('getWildcardStringPathMatcher.match', () => {
   const run = (pattern: string, match: string, result: boolean): any =>
-    expect(createWildcardStringMatcher(pattern)(match)).toBe(result);
+    expect(getWildcardStringPathMatcher(pattern)(match)).toBe(result);
 
   run('/a/b/c', '/a/b/c', true);
   run('/a/b/c', '/a/b/c/', false);
@@ -70,31 +70,35 @@ test('createWildcardStringMatcher', () => {
   run('/a/a/*+/a/a', '/a/a/a/a/a', true);
   run('/a/a/*+/a/a', '/a/a/a/a/a/a', true);
 
+  run('/a/*/c', '/a/c', false);
   run('/a/*/c', '/a/b/c', true);
   run('/a/*/c', '/a/*/c', true);
   run('/a/*/c', '/a/**/c', false);
   run('/a/*/c', '/a/*?/c', false);
   run('/a/*/c', '/a/*+/c', false);
 
+  run('/a/*?/c', '/a/c', true);
   run('/a/*?/c', '/a/b/c', true);
   run('/a/*?/c', '/a/*/c', true);
-  // run('/a/*?/c', '/a/**/c', false);
-  // run('/a/*?/c', '/a/*?/c', true);
-  // run('/a/*?/c', '/a/*+/c', false);
+  run('/a/*?/c', '/a/**/c', false);
+  run('/a/*?/c', '/a/*?/c', true);
+  run('/a/*?/c', '/a/*+/c', false);
 
-  // run('/a/*+/c', '/a/b/c', true);
-  // run('/a/*+/c', '/a/*/c', true);
-  // run('/a/*+/c', '/a/**/c', false);
-  // run('/a/*+/c', '/a/*?/c', false);
-  // run('/a/*+/c', '/a/*+/c', true);
+  run('/a/*+/c', '/a/c', false);
+  run('/a/*+/c', '/a/b/c', true);
+  run('/a/*+/c', '/a/*/c', true);
+  run('/a/*+/c', '/a/**/c', false);
+  run('/a/*+/c', '/a/*?/c', false);
+  run('/a/*+/c', '/a/*+/c', true);
 
-  // run('/a/**/c', '/a/b/c', true);
-  // run('/a/**/c', '/a/*/c', true);
-  // run('/a/**/c', '/a/**/c', true);
-  // run('/a/**/c', '/a/*?/c', true);
-  // run('/a/**/c', '/a/*+/c', true);
+  run('/a/**/c', '/a/c', true);
+  run('/a/**/c', '/a/b/c', true);
+  run('/a/**/c', '/a/*/c', true);
+  run('/a/**/c', '/a/**/c', true);
+  run('/a/**/c', '/a/*?/c', true);
+  run('/a/**/c', '/a/*+/c', true);
 
-  expect(() => createWildcardStringMatcher('/a/**/a/**/a')).toThrowError(
+  expect(() => getWildcardStringPathMatcher('/a/**/a/**/a')).toThrowError(
     'once'
   );
 });
