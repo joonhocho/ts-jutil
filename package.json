@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "TypeScript library of simple utility functions",
   "keywords": [
     "TypeScript",
@@ -34,7 +34,6 @@
     "format": "prettier --write \"./*.{js,jsx,ts,tsx}\" \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "tslint -c ./tslint.json \"src/**/*.ts\"",
     "lint:fix": "tslint --fix -c ./tslint.json \"src/**/*.ts\"",
-    "precommit": "npm run all",
     "prepublishOnly": "npm run all",
     "reinstall": "rm -rf ./node_modules ./package-lock.json ./yarn.lock && yarn",
     "start": "npm run test",
@@ -43,7 +42,6 @@
     "test:coverage:report": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "test:watch": "jest --watch"
   },
-  "pre-commit": "precommit",
   "peerDependencies": {
     "tslib": "^1.10.0"
   },
@@ -52,7 +50,6 @@
     "@types/node": "^12.6.9",
     "coveralls": "^3.0.5",
     "jest": "^24.8.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
     "tscpaths": "^0.0.9",
