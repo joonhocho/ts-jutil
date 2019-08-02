@@ -153,6 +153,25 @@ export { MapFN } from './json/ts';
 export {
   getAuthorizationBearerToken,
 } from './http/getAuthorizationBearerToken';
+export { lazyGet } from './func/lazyGet';
+export { memoize } from './func/memoize';
+export { memoizeArg } from './func/memoizeArg';
+export { memoizeCompose } from './func/memoizeCompose';
+export {
+  bypass,
+  getIsEqual,
+  noop,
+  returnFalse,
+  returnNull,
+  returnTrue,
+  returnVoid,
+} from './func/return';
+export { isMetaKeySet } from './dom/isMetaKeySet';
+export { equal } from './equal/equal';
+export { equalObjects } from './equal/equalObjects';
+export { shallowEqualObjects } from './equal/shallowEqualObjects';
+export { shallowEqualValues } from './equal/shallowEqualValues';
+export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
 export { concatArrays } from './array/concatArrays';
 export { countByIndex } from './array/countByIndex';
 export { diff } from './array/diff';
@@ -199,25 +218,6 @@ export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
-export { lazyGet } from './func/lazyGet';
-export { memoize } from './func/memoize';
-export { memoizeArg } from './func/memoizeArg';
-export { memoizeCompose } from './func/memoizeCompose';
-export {
-  bypass,
-  getIsEqual,
-  noop,
-  returnFalse,
-  returnNull,
-  returnTrue,
-  returnVoid,
-} from './func/return';
-export { equal } from './equal/equal';
-export { equalObjects } from './equal/equalObjects';
-export { shallowEqualObjects } from './equal/shallowEqualObjects';
-export { shallowEqualValues } from './equal/shallowEqualValues';
-export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
+export { getTime } from './date/getTime';
 export { parseYYYYMMDD } from './date/parseYYYYMMDD';
 export { shortFromNow } from './date/shortFromNow';
-export { isMetaKeySet } from './dom/isMetaKeySet';
-export { getTime } from './date/getTime';
