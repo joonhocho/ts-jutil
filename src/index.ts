@@ -34,37 +34,6 @@ export {
 } from './ts';
 export { UpdateJob, UpdateRunner } from './UpdateRunner';
 export { Value, ValueListener } from './Value';
-export { base64FromUrlSafe } from './string/base64FromUrlSafe';
-export { base64ToUrlSafe } from './string/base64ToUrlSafe';
-export { capitalizeFirst } from './string/capitalizeFirst';
-export { capitalizeWords } from './string/capitalizeWords';
-export { collapseWSMultiLine } from './string/collapseWSMultiLine';
-export { collapseWSSingleLine } from './string/collapseWSSingleLine';
-export { ellipsis } from './string/ellipsis';
-export { endsWith } from './string/endsWith';
-export { escapeHtmlChars } from './string/escapeHtmlChars';
-export { escapeRegExpChars } from './string/escapeRegExpChars';
-export { formatCurrency } from './string/formatCurrency';
-export { formatName } from './string/formatName';
-export { fromBase64 } from './string/fromBase64';
-export { pad } from './string/pad';
-export { padEnd } from './string/padEnd';
-export { padStart } from './string/padStart';
-export { parseFileUrl } from './string/parseFileUrl';
-export { repeatString } from './string/repeatString';
-export { split } from './string/split';
-export { splitIntoTwo } from './string/splitIntoTwo';
-export { splitIntoTwoFromLast } from './string/splitIntoTwoFromLast';
-export { startsWith } from './string/startsWith';
-export { stringify } from './string/stringify';
-export { toBase64 } from './string/toBase64';
-export { toDigits } from './string/toDigits';
-export { toTitleCase } from './string/toTitleCase';
-export { trim, trimPattern } from './string/trim';
-export { trimLeft, trimLeftPattern } from './string/trimLeft';
-export { trimRight, trimRightPattern } from './string/trimRight';
-export { truncate } from './string/truncate';
-export { unescapeHtmlChars } from './string/unescapeHtmlChars';
 export { assignDefined } from './object/assignDefined';
 export { assignKeys } from './object/assignKeys';
 export { copy } from './object/copy';
@@ -106,6 +75,50 @@ export { values } from './object/values';
 export { withoutKeys } from './object/withoutKeys';
 export { withoutNilProps } from './object/withoutNilProps';
 export { withoutUndefinedProps } from './object/withoutUndefinedProps';
+export { base64FromUrlSafe } from './string/base64FromUrlSafe';
+export { base64ToUrlSafe } from './string/base64ToUrlSafe';
+export { capitalizeFirst } from './string/capitalizeFirst';
+export { capitalizeWords } from './string/capitalizeWords';
+export { collapseWSMultiLine } from './string/collapseWSMultiLine';
+export { collapseWSSingleLine } from './string/collapseWSSingleLine';
+export { ellipsis } from './string/ellipsis';
+export { endsWith } from './string/endsWith';
+export { escapeHtmlChars } from './string/escapeHtmlChars';
+export { escapeRegExpChars } from './string/escapeRegExpChars';
+export { formatCurrency } from './string/formatCurrency';
+export { formatName } from './string/formatName';
+export { fromBase64 } from './string/fromBase64';
+export { pad } from './string/pad';
+export { padEnd } from './string/padEnd';
+export { padStart } from './string/padStart';
+export { parseFileUrl } from './string/parseFileUrl';
+export { repeatString } from './string/repeatString';
+export { split } from './string/split';
+export { splitIntoTwo } from './string/splitIntoTwo';
+export { splitIntoTwoFromLast } from './string/splitIntoTwoFromLast';
+export { startsWith } from './string/startsWith';
+export { stringify } from './string/stringify';
+export { toBase64 } from './string/toBase64';
+export { toDigits } from './string/toDigits';
+export { toTitleCase } from './string/toTitleCase';
+export { trim, trimPattern } from './string/trim';
+export { trimLeft, trimLeftPattern } from './string/trimLeft';
+export { trimRight, trimRightPattern } from './string/trimRight';
+export { truncate } from './string/truncate';
+export { unescapeHtmlChars } from './string/unescapeHtmlChars';
+export { Unpromise, allValues, promiseAll } from './promise/allValues';
+export { createBatcher } from './promise/createBatcher';
+export { DeferredPromise, TimeoutError } from './promise/DeferredPromise';
+export { mapPromise } from './promise/mapPromise';
+export { sleep } from './promise/sleep';
+export {
+  IDataResult,
+  IErrorResult,
+  IResult,
+  toResult,
+} from './promise/toResult';
+export { PromiseOfNewType } from './promise/ts';
+export { waitAll } from './promise/waitAll';
 export {
   parseVideoIdFromYouTubeVideoUrl,
 } from './youtube/parseVideoIdFromYouTubeVideoUrl';
@@ -121,19 +134,6 @@ export { inheritProp } from './prototype/inheritProp';
 export { inheritProps } from './prototype/inheritProps';
 export { inheritPrototype } from './prototype/inheritPrototype';
 export { inheritStatic } from './prototype/inheritStatic';
-export { Unpromise, allValues, promiseAll } from './promise/allValues';
-export { createBatcher } from './promise/createBatcher';
-export { DeferredPromise, TimeoutError } from './promise/DeferredPromise';
-export { mapPromise } from './promise/mapPromise';
-export { sleep } from './promise/sleep';
-export {
-  IDataResult,
-  IErrorResult,
-  IResult,
-  toResult,
-} from './promise/toResult';
-export { PromiseOfNewType } from './promise/ts';
-export { waitAll } from './promise/waitAll';
 export { average } from './number/average';
 export { formatShortNumber } from './number/formatShortNumber';
 export { intRange } from './number/intRange';
@@ -166,12 +166,6 @@ export {
   returnTrue,
   returnVoid,
 } from './func/return';
-export { isMetaKeySet } from './dom/isMetaKeySet';
-export { equal } from './equal/equal';
-export { equalObjects } from './equal/equalObjects';
-export { shallowEqualObjects } from './equal/shallowEqualObjects';
-export { shallowEqualValues } from './equal/shallowEqualValues';
-export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
 export { concatArrays } from './array/concatArrays';
 export { countByIndex } from './array/countByIndex';
 export { diff } from './array/diff';
@@ -218,6 +212,12 @@ export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
+export { equal } from './equal/equal';
+export { equalObjects } from './equal/equalObjects';
+export { shallowEqualObjects } from './equal/shallowEqualObjects';
+export { shallowEqualValues } from './equal/shallowEqualValues';
+export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
+export { isMetaKeySet } from './dom/isMetaKeySet';
 export { getTime } from './date/getTime';
 export { parseYYYYMMDD } from './date/parseYYYYMMDD';
 export { shortFromNow } from './date/shortFromNow';
