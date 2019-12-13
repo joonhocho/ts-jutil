@@ -22,7 +22,10 @@ test('SimpleCache', async () => {
 
   const mockFn = jest.fn();
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[2, 'b'], [1, 'a']]);
+  expect(mockFn.mock.calls).toEqual([
+    [2, 'b'],
+    [1, 'a'],
+  ]);
   mockFn.mockClear();
 
   expect(cache.getKeys()).toEqual(['b', 'a']);
@@ -35,7 +38,11 @@ test('SimpleCache', async () => {
   expect(cache.has('c')).toBe(true);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[2, 'b'], [1, 'a'], [3, 'c']]);
+  expect(mockFn.mock.calls).toEqual([
+    [2, 'b'],
+    [1, 'a'],
+    [3, 'c'],
+  ]);
   mockFn.mockClear();
 
   cache.set('c', 3.3);
@@ -45,7 +52,11 @@ test('SimpleCache', async () => {
   expect(cache.has('c')).toBe(true);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[2, 'b'], [1, 'a'], [3.3, 'c']]);
+  expect(mockFn.mock.calls).toEqual([
+    [2, 'b'],
+    [1, 'a'],
+    [3.3, 'c'],
+  ]);
   mockFn.mockClear();
 
   cache.set('a', 1.1);
@@ -55,7 +66,11 @@ test('SimpleCache', async () => {
   expect(cache.has('a')).toBe(true);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[2, 'b'], [3.3, 'c'], [1.1, 'a']]);
+  expect(mockFn.mock.calls).toEqual([
+    [2, 'b'],
+    [3.3, 'c'],
+    [1.1, 'a'],
+  ]);
   mockFn.mockClear();
 
   // test LRU
@@ -66,7 +81,11 @@ test('SimpleCache', async () => {
   expect(cache.has('d')).toBe(true);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[3.3, 'c'], [1.1, 'a'], [4, 'd']]);
+  expect(mockFn.mock.calls).toEqual([
+    [3.3, 'c'],
+    [1.1, 'a'],
+    [4, 'd'],
+  ]);
   mockFn.mockClear();
 
   expect(cache.delete('c')).toBe(true);
@@ -77,7 +96,10 @@ test('SimpleCache', async () => {
   expect(cache.has('c')).toBe(false);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[1.1, 'a'], [4, 'd']]);
+  expect(mockFn.mock.calls).toEqual([
+    [1.1, 'a'],
+    [4, 'd'],
+  ]);
   mockFn.mockClear();
 
   cache.clear();
@@ -100,13 +122,20 @@ test('SimpleCache', async () => {
   cache.set('c', 3, { ttl: 20 });
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[1, 'a'], [2, 'b'], [3, 'c']]);
+  expect(mockFn.mock.calls).toEqual([
+    [1, 'a'],
+    [2, 'b'],
+    [3, 'c'],
+  ]);
   mockFn.mockClear();
 
   jest.runTimersToTime(10);
 
   cache.forEach(mockFn);
-  expect(mockFn.mock.calls).toEqual([[2, 'b'], [3, 'c']]);
+  expect(mockFn.mock.calls).toEqual([
+    [2, 'b'],
+    [3, 'c'],
+  ]);
   mockFn.mockClear();
 
   jest.runTimersToTime(10);

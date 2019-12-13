@@ -17,7 +17,10 @@ describe('deepSortedCopy', () => {
 
   test('should sort objects deeply by keys', () => {
     const src = {
-      b: [{ c: 3, a: 1, b: 2 }, { c2: 3, a2: 1, b2: 2 }],
+      b: [
+        { c: 3, a: 1, b: 2 },
+        { c2: 3, a2: 1, b2: 2 },
+      ],
       a: '1',
       c: { c3: 3, a3: 1, b3: 2 },
     };

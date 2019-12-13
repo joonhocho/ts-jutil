@@ -75,6 +75,14 @@ export { values } from './object/values';
 export { withoutKeys } from './object/withoutKeys';
 export { withoutNilProps } from './object/withoutNilProps';
 export { withoutUndefinedProps } from './object/withoutUndefinedProps';
+export { parseVideoIdFromYouTubeVideoUrl } from './youtube/parseVideoIdFromYouTubeVideoUrl';
+export {
+  YouTubeVideoThumbnailSize,
+  getVideoThumbnailUrl,
+  getYouTubeChannelUrl,
+  getYouTubeVideoEmbedUrl,
+  getYouTubeVideoUrl,
+} from './youtube/url';
 export { base64FromUrlSafe } from './string/base64FromUrlSafe';
 export { base64ToUrlSafe } from './string/base64ToUrlSafe';
 export { capitalizeFirst } from './string/capitalizeFirst';
@@ -119,16 +127,6 @@ export {
 } from './promise/toResult';
 export { PromiseOfNewType } from './promise/ts';
 export { waitAll } from './promise/waitAll';
-export {
-  parseVideoIdFromYouTubeVideoUrl,
-} from './youtube/parseVideoIdFromYouTubeVideoUrl';
-export {
-  YouTubeVideoThumbnailSize,
-  getVideoThumbnailUrl,
-  getYouTubeChannelUrl,
-  getYouTubeVideoEmbedUrl,
-  getYouTubeVideoUrl,
-} from './youtube/url';
 export { inheritClass } from './prototype/inheritClass';
 export { inheritProp } from './prototype/inheritProp';
 export { inheritProps } from './prototype/inheritProps';
@@ -144,15 +142,13 @@ export { parseFloatInRange } from './number/parseFloatInRange';
 export { parseIntInRange } from './number/parseIntInRange';
 export { roundDownToInterval } from './number/roundDownToInterval';
 export { roundUpToInterval } from './number/roundUpToInterval';
+export { getAuthorizationBearerToken } from './http/getAuthorizationBearerToken';
 export { cloneDeep } from './json/cloneDeep';
 export { deepMapArrayWithoutEmpty } from './json/deepMapArrayWithoutEmpty';
 export { deepMapObjectWithoutEmpty } from './json/deepMapObjectWithoutEmpty';
 export { mapStruct } from './json/mapStruct';
 export { mapStructPartial } from './json/mapStructPartial';
 export { MapFN } from './json/ts';
-export {
-  getAuthorizationBearerToken,
-} from './http/getAuthorizationBearerToken';
 export { lazyGet } from './func/lazyGet';
 export { memoize } from './func/memoize';
 export { memoizeArg } from './func/memoizeArg';
@@ -212,12 +208,12 @@ export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
+export { isMetaKeySet } from './dom/isMetaKeySet';
 export { equal } from './equal/equal';
 export { equalObjects } from './equal/equalObjects';
 export { shallowEqualObjects } from './equal/shallowEqualObjects';
 export { shallowEqualValues } from './equal/shallowEqualValues';
 export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
-export { isMetaKeySet } from './dom/isMetaKeySet';
 export { getTime } from './date/getTime';
 export { parseYYYYMMDD } from './date/parseYYYYMMDD';
 export { shortFromNow } from './date/shortFromNow';

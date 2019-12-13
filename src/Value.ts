@@ -1,9 +1,9 @@
-export type ValueListener<T> = (value: T, prevValue: T | undefined) => void;
+export type ValueListener<T> = (value: T, prevValue: T) => void;
 
 export class Value<T> {
   private fns: Array<ValueListener<T>> = [];
 
-  constructor(protected _value?: T) {}
+  constructor(protected _value: T) {}
 
   public on(fn: ValueListener<T>): () => boolean {
     const { fns } = this;
@@ -21,11 +21,11 @@ export class Value<T> {
     return false;
   }
 
-  public get value(): T | undefined {
+  public get value(): T {
     return this._value;
   }
 
-  public get(): T | undefined {
+  public get(): T {
     return this._value;
   }
 

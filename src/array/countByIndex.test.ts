@@ -16,14 +16,22 @@ test('countByIndex', () => {
     d: 1,
   });
 
-  expect(countByIndex(['a', 'b', 'c', 'a'].map((k) => ({ k })), 'k')).toEqual({
+  expect(
+    countByIndex(
+      ['a', 'b', 'c', 'a'].map((k) => ({ k })),
+      'k'
+    )
+  ).toEqual({
     a: 2,
     b: 1,
     c: 1,
   });
 
   expect(
-    countByIndex(['a', 'b', 'c', 'a'].map((k) => ({ k })), ({ k }) => k)
+    countByIndex(
+      ['a', 'b', 'c', 'a'].map((k) => ({ k })),
+      ({ k }) => k
+    )
   ).toEqual({
     a: 2,
     b: 1,

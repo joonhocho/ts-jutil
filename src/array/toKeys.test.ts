@@ -45,7 +45,13 @@ describe('toKeys', () => {
     });
 
     // with toKey and toValue
-    expect(toKeys(arr, (x) => `k${x}`, (x) => `v${x}`)).toEqual({
+    expect(
+      toKeys(
+        arr,
+        (x) => `k${x}`,
+        (x) => `v${x}`
+      )
+    ).toEqual({
       k3: 'v3',
       k5: 'v5',
       ka: 'va',
