@@ -58,3 +58,31 @@ test('DeferredPromise', async () => {
   deferred4.resolve('good');
   expect(await deferred4.promise).toBe('good');
 });
+
+test('DeferredPromise.finally resolve', async () => {
+  const d1 = new DeferredPromise();
+  const m1 = jest.fn();
+  d1.finally(m1);
+
+  expect(m1).not.toHaveBeenCalled();
+
+  d1.resolve(1);
+
+  await expect(d1).resolves.toBe(1);
+
+  expect(m1).toHaveBeenCalledWith();
+});
+
+test('DeferredPromise.finally reject', async () => {
+  const d1 = new DeferredPromise();
+  const m1 = jest.fn();
+  d1.finally(m1);
+
+  expect(m1).not.toHaveBeenCalled();
+
+  d1.reject(1);
+
+  await expect(d1).rejects.toBe(1);
+
+  expect(m1).toHaveBeenCalledWith();
+});

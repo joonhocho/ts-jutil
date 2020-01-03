@@ -52,6 +52,19 @@ export class DeferredPromise<T, E = any> {
     return this._promise.catch(onRejected);
   }
 
+  public finally(onFinally: () => void): Promise<T> {
+    return this._promise.then(
+      (v) => {
+        onFinally();
+        return v;
+      },
+      (e) => {
+        onFinally();
+        throw e;
+      }
+    );
+  }
+
   private clear(): void {
     this._resolve = null;
     this._reject = null;
