@@ -1,18 +1,18 @@
 export type ListenerType<T, R> = (data: T, acc: R | null) => R;
 
-export type OffFunction = () => boolean;
+export type OffFunction = () => void;
 
 export class Emitter<T, R = void> {
   private _fns: Array<ListenerType<T, R>> = [];
 
   public on(fn: ListenerType<T, R>): OffFunction {
     this._fns.push(fn);
-    return (): boolean => this.off(fn);
+    return (): void => this.off(fn);
   }
 
   public prepend(fn: ListenerType<T, R>): OffFunction {
     this._fns.unshift(fn);
-    return (): boolean => this.off(fn);
+    return (): void => this.off(fn);
   }
 
   public once(fn: ListenerType<T, R>): OffFunction {
@@ -27,14 +27,12 @@ export class Emitter<T, R = void> {
     return off;
   }
 
-  public off(fn: ListenerType<T, R>): boolean {
+  public off(fn: ListenerType<T, R>): void {
     const { _fns } = this;
     const i = _fns.indexOf(fn);
     if (i >= 0) {
       _fns.splice(i, 1);
-      return true;
     }
-    return false;
   }
 
   public emit(data: T): R | null {

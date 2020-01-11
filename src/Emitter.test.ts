@@ -18,19 +18,19 @@ test('Emitter', () => {
   emitter.emit(2);
   emitter.emit(2);
 
-  expect(off1()).toBe(true);
+  off1();
   expect(emitter.count()).toBe(1);
   emitter.emit(3);
 
-  expect(off1()).toBe(false);
+  off1();
   expect(emitter.count()).toBe(1);
   emitter.emit(4);
 
-  expect(off2()).toBe(true);
+  off2();
   expect(emitter.count()).toBe(0);
   emitter.emit(5);
 
-  expect(off2()).toBe(false);
+  off2();
   expect(emitter.count()).toBe(0);
   emitter.emit(6);
 
@@ -43,7 +43,7 @@ test('Emitter', () => {
   expect(emitter.count()).toBe(0);
   emitter.emit(8);
 
-  expect(off3()).toBe(false);
+  off3();
   expect(emitter.count()).toBe(0);
   emitter.emit(9);
 

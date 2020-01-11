@@ -13,16 +13,16 @@ describe('Value', () => {
     value.set(2);
     value.set(2);
 
-    expect(off1()).toBe(true);
+    off1();
     value.set(3);
 
-    expect(off1()).toBe(false);
+    off1();
     value.set(4);
 
-    expect(off2()).toBe(true);
+    off2();
     value.set(5);
 
-    expect(off2()).toBe(false);
+    off2();
     value.set(6);
 
     const vs3: Array<[number, number]> = [];
@@ -32,7 +32,7 @@ describe('Value', () => {
     value.clear();
     value.set(8);
 
-    expect(off3()).toBe(false);
+    off3();
     value.set(9);
 
     expect(vs1).toEqual([
@@ -45,6 +45,25 @@ describe('Value', () => {
       [4, 3],
     ]);
     expect(vs3).toEqual([[7, 6]]);
+  });
+
+  test('once', () => {
+    const value = new Value<number>(0);
+    const args: Array<[number, number]> = [];
+    value.once((v, pv) => args.push([v, pv]));
+    value.set(1);
+    value.set(2);
+    value.set(3);
+    expect(args).toEqual([[1, 0]]);
+  });
+
+  test('once off', () => {
+    const value = new Value<number>(0);
+    const args: Array<[number, number]> = [];
+    const off = value.once((v, pv) => args.push([v, pv]));
+    off();
+    value.set(1);
+    expect(args).toEqual([]);
   });
 
   test('async', () => {

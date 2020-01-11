@@ -6,6 +6,8 @@ export interface IListenerOptions {
   async?: boolean;
 }
 
+export type ValueOffFunction = () => void;
+
 export class Value<T> {
   private fns: Array<ValueListener<T>> = [];
   private asyncFns: Array<ValueListener<T>> = [];
@@ -13,19 +15,29 @@ export class Value<T> {
 
   constructor(protected _value: T) {}
 
-  public on(fn: ValueListener<T>, opts?: IListenerOptions): () => boolean {
+  public on(fn: ValueListener<T>, opts?: IListenerOptions): ValueOffFunction {
     (opts && opts.async ? this.asyncFns : this.fns).push(fn);
-    return (): boolean => this.off(fn, opts);
+    return (): void => this.off(fn, opts);
   }
 
-  public off(fn: ValueListener<T>, opts?: IListenerOptions): boolean {
+  public off(fn: ValueListener<T>, opts?: IListenerOptions): void {
     const fns = opts && opts.async ? this.asyncFns : this.fns;
     const i = fns.indexOf(fn);
     if (i >= 0) {
       fns.splice(i, 1);
-      return true;
     }
-    return false;
+  }
+
+  public once(fn: ValueListener<T>, opts?: IListenerOptions): ValueOffFunction {
+    let off: ValueOffFunction | null = this.on((data, acc) => {
+      const r = fn(data, acc);
+      if (off) {
+        off();
+        off = null;
+      }
+      return r;
+    }, opts);
+    return off;
   }
 
   public get value(): T {
