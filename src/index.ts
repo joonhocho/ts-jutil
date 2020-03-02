@@ -169,6 +169,11 @@ export {
   returnTrue,
   returnVoid,
 } from './func/return';
+export { equal } from './equal/equal';
+export { equalObjects } from './equal/equalObjects';
+export { shallowEqualObjects } from './equal/shallowEqualObjects';
+export { shallowEqualValues } from './equal/shallowEqualValues';
+export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
 export { concatArrays } from './array/concatArrays';
 export { countByIndex } from './array/countByIndex';
 export { diff } from './array/diff';
@@ -215,11 +220,6 @@ export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
-export { equal } from './equal/equal';
-export { equalObjects } from './equal/equalObjects';
-export { shallowEqualObjects } from './equal/shallowEqualObjects';
-export { shallowEqualValues } from './equal/shallowEqualValues';
-export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
 export { isMetaKeySet } from './dom/isMetaKeySet';
 export {
   IDateNumbers,
