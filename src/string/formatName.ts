@@ -9,11 +9,7 @@ const allWS = /\s+/g;
 
 export const formatName = (s: string): string => {
   if (s) {
-    return s
-      .trim()
-      .split(allWS)
-      .map(formatNamePart)
-      .join(' ');
+    return s.trim().split(allWS).map(formatNamePart).join(' ');
   }
   return '';
 };
