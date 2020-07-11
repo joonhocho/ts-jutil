@@ -1,6 +1,6 @@
 {
   "name": "ts-jutil",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "TypeScript library of simple utility functions",
   "keywords": [
     "TypeScript",
@@ -46,19 +46,19 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.5",
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.22",
     "coveralls": "^3.1.0",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "prettier": "^2.0.5",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^26.1.1",
     "tscpaths": "^0.0.9",
     "tsdef": "^0.0.13",
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
-    "tstf": "^0.0.23",
-    "typescript": "^3.8.3"
+    "tstf": "^0.0.25",
+    "typescript": "^3.9.6"
   },
   "engines": {
     "node": ">=8.0.0"
