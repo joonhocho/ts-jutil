@@ -1,4 +1,4 @@
-import { deepMapArrayWithoutEmpty } from './deepMapArrayWithoutEmpty';
+import { deepMapArrayWithoutEmpty } from './deepMap';
 
 test('deepMapArrayWithoutEmpty', () => {
   expect(

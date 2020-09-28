@@ -1,4 +1,4 @@
-import { deepMapObjectWithoutEmpty } from './deepMapObjectWithoutEmpty';
+import { deepMapObjectWithoutEmpty } from './deepMap';
 
 test('deepMapObjectWithoutEmpty', () => {
   expect(deepMapObjectWithoutEmpty({}, (a) => a)).toBe(null);

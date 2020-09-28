@@ -1,8 +1,34 @@
 import { isObject } from '_src/is';
 import { getKeys } from '_src/object/getKeys';
 import { AnyObject } from '_src/ts';
-import { deepMapArrayWithoutEmpty } from './deepMapArrayWithoutEmpty';
 import { MapFN } from './ts';
+
+export const deepMapArrayWithoutEmpty = <I, T extends I[], FN extends MapFN>(
+  arr: T,
+  fn: FN
+): any[] | null => {
+  const copy = [];
+  const len = arr.length;
+  for (let i = 0; i < len; i += 1) {
+    const value = arr[i];
+
+    let newValue;
+    if (isObject(value)) {
+      if (Array.isArray(value)) {
+        newValue = deepMapArrayWithoutEmpty(value, fn);
+      } else {
+        newValue = deepMapObjectWithoutEmpty(value, fn);
+      }
+    } else {
+      newValue = fn(value, i, arr);
+    }
+
+    if (newValue != null && newValue === newValue) {
+      copy.push(newValue);
+    }
+  }
+  return copy.length ? copy : null;
+};
 
 export const deepMapObjectWithoutEmpty = <
   T extends AnyObject,

@@ -1,4 +1,4 @@
-import { equalObjects } from './equalObjects';
+import { equalObjects } from './equal';
 
 describe('equalArrays', () => {
   test('deeply compares two arrays', () => {

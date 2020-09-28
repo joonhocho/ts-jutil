@@ -154,8 +154,10 @@ export { roundUpToInterval } from './number/roundUpToInterval';
 export { toFloat } from './number/toFloat';
 export { toInt } from './number/toInt';
 export { cloneDeep } from './json/cloneDeep';
-export { deepMapArrayWithoutEmpty } from './json/deepMapArrayWithoutEmpty';
-export { deepMapObjectWithoutEmpty } from './json/deepMapObjectWithoutEmpty';
+export {
+  deepMapArrayWithoutEmpty,
+  deepMapObjectWithoutEmpty,
+} from './json/deepMap';
 export { mapStruct } from './json/mapStruct';
 export { mapStructPartial } from './json/mapStructPartial';
 export { MapFN } from './json/ts';
@@ -173,17 +175,7 @@ export {
   returnTrue,
   returnVoid,
 } from './func/return';
-export {
-  IDateNumbers,
-  getDateNumbersInTimeZone,
-} from './date/getDateNumbersInTimeZone';
-export { getDateWithTimeZone } from './date/getDateWithTimeZone';
-export { getTime } from './date/getTime';
-export { parseYYYYMMDD } from './date/parseYYYYMMDD';
-export { shortFromNow } from './date/shortFromNow';
-export { TimeZone } from './date/types';
-export { equal } from './equal/equal';
-export { equalObjects } from './equal/equalObjects';
+export { equal, equalObjects } from './equal/equal';
 export { shallowEqualObjects } from './equal/shallowEqualObjects';
 export { shallowEqualValues } from './equal/shallowEqualValues';
 export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
@@ -234,3 +226,12 @@ export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
 export { isMetaKeySet } from './dom/isMetaKeySet';
+export {
+  IDateNumbers,
+  getDateNumbersInTimeZone,
+} from './date/getDateNumbersInTimeZone';
+export { getDateWithTimeZone } from './date/getDateWithTimeZone';
+export { getTime } from './date/getTime';
+export { parseYYYYMMDD } from './date/parseYYYYMMDD';
+export { shortFromNow } from './date/shortFromNow';
+export { TimeZone } from './date/types';
