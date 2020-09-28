@@ -40,14 +40,6 @@ export {
   ValueListener,
   ValueOffFunction,
 } from './Value';
-export { parseVideoIdFromYouTubeVideoUrl } from './youtube/parseVideoIdFromYouTubeVideoUrl';
-export {
-  YouTubeVideoThumbnailSize,
-  getVideoThumbnailUrl,
-  getYouTubeChannelUrl,
-  getYouTubeVideoEmbedUrl,
-  getYouTubeVideoUrl,
-} from './youtube/url';
 export { base64FromUrlSafe } from './string/base64FromUrlSafe';
 export { base64ToUrlSafe } from './string/base64ToUrlSafe';
 export { capitalizeFirst } from './string/capitalizeFirst';
@@ -81,11 +73,14 @@ export { trimRight, trimRightPattern } from './string/trimRight';
 export { truncate } from './string/truncate';
 export { truncateWords } from './string/truncateWords';
 export { unescapeHtmlChars } from './string/unescapeHtmlChars';
-export { inheritClass } from './prototype/inheritClass';
-export { inheritProp } from './prototype/inheritProp';
-export { inheritProps } from './prototype/inheritProps';
-export { inheritPrototype } from './prototype/inheritPrototype';
-export { inheritStatic } from './prototype/inheritStatic';
+export { parseVideoIdFromYouTubeVideoUrl } from './youtube/parseVideoIdFromYouTubeVideoUrl';
+export {
+  YouTubeVideoThumbnailSize,
+  getVideoThumbnailUrl,
+  getYouTubeChannelUrl,
+  getYouTubeVideoEmbedUrl,
+  getYouTubeVideoUrl,
+} from './youtube/url';
 export { Unpromise, allValues, promiseAll } from './promise/allValues';
 export { createBatcher } from './promise/createBatcher';
 export { DeferredPromise, TimeoutError } from './promise/DeferredPromise';
@@ -141,6 +136,11 @@ export { values } from './object/values';
 export { withoutKeys } from './object/withoutKeys';
 export { withoutNilProps } from './object/withoutNilProps';
 export { withoutUndefinedProps } from './object/withoutUndefinedProps';
+export { inheritClass } from './prototype/inheritClass';
+export { inheritProp } from './prototype/inheritProp';
+export { inheritProps } from './prototype/inheritProps';
+export { inheritPrototype } from './prototype/inheritPrototype';
+export { inheritStatic } from './prototype/inheritStatic';
 export { average } from './number/average';
 export { formatShortNumber } from './number/formatShortNumber';
 export { intRange } from './number/intRange';
@@ -161,7 +161,6 @@ export {
 export { mapStruct } from './json/mapStruct';
 export { mapStructPartial } from './json/mapStructPartial';
 export { MapFN } from './json/ts';
-export { getAuthorizationBearerToken } from './http/getAuthorizationBearerToken';
 export { lazyGet } from './func/lazyGet';
 export { memoize } from './func/memoize';
 export { memoizeArg } from './func/memoizeArg';
@@ -175,11 +174,20 @@ export {
   returnTrue,
   returnVoid,
 } from './func/return';
+export { getAuthorizationBearerToken } from './http/getAuthorizationBearerToken';
 export { equal, equalObjects } from './equal/equal';
 export { shallowEqualObjects } from './equal/shallowEqualObjects';
 export { shallowEqualValues } from './equal/shallowEqualValues';
 export { IEqualOptions, IEqualValuesOptions } from './equal/ts';
-export { isMetaKeySet } from './dom/isMetaKeySet';
+export {
+  IDateNumbers,
+  getDateNumbersInTimeZone,
+} from './date/getDateNumbersInTimeZone';
+export { getDateWithTimeZone } from './date/getDateWithTimeZone';
+export { getTime } from './date/getTime';
+export { parseYYYYMMDD } from './date/parseYYYYMMDD';
+export { shortFromNow } from './date/shortFromNow';
+export { TimeZone } from './date/types';
 export { concatArrays } from './array/concatArrays';
 export { countByIndex } from './array/countByIndex';
 export { diff } from './array/diff';
@@ -226,12 +234,4 @@ export { withoutFalsy } from './array/withoutFalsy';
 export { withoutItem } from './array/withoutItem';
 export { withoutNilItems } from './array/withoutNilItems';
 export { withoutUndefinedItems } from './array/withoutUndefinedItems';
-export {
-  IDateNumbers,
-  getDateNumbersInTimeZone,
-} from './date/getDateNumbersInTimeZone';
-export { getDateWithTimeZone } from './date/getDateWithTimeZone';
-export { getTime } from './date/getTime';
-export { parseYYYYMMDD } from './date/parseYYYYMMDD';
-export { shortFromNow } from './date/shortFromNow';
-export { TimeZone } from './date/types';
+export { isMetaKeySet } from './dom/isMetaKeySet';
